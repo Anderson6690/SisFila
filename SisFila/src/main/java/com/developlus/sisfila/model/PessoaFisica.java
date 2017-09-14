@@ -10,6 +10,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 import com.developlus.sisfila.enums.Sexo;
 
 @Entity
@@ -31,7 +33,9 @@ public abstract class PessoaFisica extends Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
+	@Past(message = "Data de nascimento inválida")
+	@NotNull(message = "A data de nascimento é obrigatória")
 	@Column(name = "data_nascimento")
 	@Temporal(TemporalType.DATE)
 	public Date getDataNascimento() {

@@ -39,7 +39,7 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroEstado" icon="ui-icon-pencil"
+					<p:button outcome="CadastroEstado" icon="ui-icon-pencil" disabled="#{not pesquisaEstadoBean.estadoSelecionado}"
 						value="Editar">
 						<o:param name="estado" value="#{pesquisaEstadoBean.estado.id}" />
 					</p:button>

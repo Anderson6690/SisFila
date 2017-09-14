@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="titulo">Cadastro de Grupo</ui:define>
+
+	<ui:define name="content">
+
+		<f:metadata>
+			<o:viewParam name="grupo" value="#{cadastroGrupoBean.grupo}" />
+		</f:metadata>
+
+		<h1 class="aw-page-title">Cadastro de Grupo</h1>
+
+		<h:form id="frm">
+
+			<p:toolbar>
+
+				<p:toolbarGroup>
+					<p:commandButton value="Salvar"
+						actionListener="#{cadastroGrupoBean.salvar}" process="frm @this"
+						update="@form" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Novo"
+						actionListener="#{cadastroGrupoBean.novo}" process="@this"
+						update="@form" />
+
+					<p:button value="Pesquisa" outcome="PesquisaGrupo" />
+				</p:toolbarGroup>
+
+			</p:toolbar>
+
+			<p:messages autoUpdate="true" />
+
+			<div class="ui-fluid">
+				<p:panelGrid columns="4" layout="grid"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+					styleClass="panelgrid-noborder">
+
+					<p:outputLabel value="Nome:" for="nome" />
+					<p:inputText id="nome" value="#{cadastroGrupoBean.grupo.nome}" />
+					
+					
+					<p:outputLabel value="Permissões" for="permissoes" />
+					<p:selectManyMenu
+						styleClass="form-control" id="permissoes"
+						value="#{cadastroGrupoBean.grupo.permissoes}"
+						showCheckbox="true" scrollHeight="137" converter="permissaoConverter" >
+						
+						<f:attribute name="collectionType" value="java.util.ArrayList" />
+						
+						<f:selectItems
+							value="#{cadastroGrupoBean.permissoes}"
+							var="permissao" itemLabel="#{permissao.nome}"
+							itemValue="#{permissao}" />
+					</p:selectManyMenu>
+					
+				</p:panelGrid>
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

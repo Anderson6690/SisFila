@@ -49,5 +49,9 @@ public class PesquisaEstadoBean implements Serializable {
 	public void setEstados(List<Estado> estados) {
 		this.estados = estados;
 	}
+	
+	public boolean isEstadoSelecionado() {
+		return this.estado != null;
+	}
 
 }

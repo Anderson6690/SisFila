@@ -2,14 +2,18 @@ package com.developlus.sisfila.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,8 +23,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-
 import com.developlus.sisfila.enums.Sexo;
 
 @Entity
@@ -35,10 +39,9 @@ public class Usuario implements Serializable {
 	private String senha;
 	private String senhaConfirmacao;
 	private boolean ativo;
-	private Date dataNascimento;
-	private boolean admnistrador;
 	private Sexo sexo;
 	private Funcionario funcionario;
+	private List<Grupo> grupos;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,6 +76,8 @@ public class Usuario implements Serializable {
 		this.userName = userName;
 	}
 
+	@NotBlank(message = "Informe uma senha")
+	@Size(min = 4, message = "A senha deve conter no mínimo 4 caracteres")
 	public String getSenha() {
 		return senha;
 	}
@@ -98,26 +103,6 @@ public class Usuario implements Serializable {
 		this.ativo = ativo;
 	}
 
-	@Past(message = "Data de nascimento inválida")
-	@NotNull(message = "A data de nascimento é obrigatória")
-	@Column(name = "data_nascimento")
-	@Temporal(TemporalType.DATE)
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public boolean isAdmnistrador() {
-		return admnistrador;
-	}
-
-	public void setAdmnistrador(boolean admnistrador) {
-		this.admnistrador = admnistrador;
-	}
-
 	@NotNull(message = "O sexo é obrigatório")
 	@Enumerated(EnumType.STRING)
 	public Sexo getSexo() {
@@ -136,6 +121,17 @@ public class Usuario implements Serializable {
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	@Size(min = 1, message = "Selecione pelo menos um grupo")
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_grupo"))	
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
 	}
 
 	@Override

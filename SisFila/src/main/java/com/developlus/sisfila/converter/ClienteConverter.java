@@ -4,25 +4,25 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import com.developlus.sisfila.model.Estado;
-import com.developlus.sisfila.repository.EstadoRepository;
+import com.developlus.sisfila.model.Cliente;
+import com.developlus.sisfila.repository.ClienteRepository;
 import com.developlus.sisfila.util.cdi.CDIServiceLocator;
 
-@FacesConverter(forClass = Estado.class)
-public class EstadoConverter implements Converter {
+@FacesConverter(forClass = Cliente.class)
+public class ClienteConverter implements Converter {
 
-	private EstadoRepository estadoRepository;
+	private ClienteRepository clienteRepository;
 
-	public EstadoConverter() {
-		this.estadoRepository = CDIServiceLocator.getBean(EstadoRepository.class);
+	public ClienteConverter() {
+		this.clienteRepository = CDIServiceLocator.getBean(ClienteRepository.class);
 	}
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		Estado retorno = null;
+		Cliente retorno = null;
 
 		if (value != null) {
-			retorno = this.estadoRepository.findOne(new Long(value));
+			retorno = this.clienteRepository.findOne(new Long(value));
 		}
 
 		return retorno;
@@ -31,9 +31,9 @@ public class EstadoConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
-			Estado estado = (Estado) value;
+			Cliente cliente = (Cliente) value;
 
-			return estado.getId() == null ? null : estado.getId().toString();
+			return cliente.getId() == null ? null : cliente.getId().toString();
 		}
 
 		return "";

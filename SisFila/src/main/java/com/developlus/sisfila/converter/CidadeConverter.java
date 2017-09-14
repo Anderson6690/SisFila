@@ -4,25 +4,25 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import com.developlus.sisfila.model.Estado;
-import com.developlus.sisfila.repository.EstadoRepository;
+import com.developlus.sisfila.model.Cidade;
+import com.developlus.sisfila.repository.CidadeRepository;
 import com.developlus.sisfila.util.cdi.CDIServiceLocator;
 
-@FacesConverter(forClass = Estado.class)
-public class EstadoConverter implements Converter {
+@FacesConverter(forClass = Cidade.class)
+public class CidadeConverter implements Converter {
 
-	private EstadoRepository estadoRepository;
+	private CidadeRepository cidadeRepository;
 
-	public EstadoConverter() {
-		this.estadoRepository = CDIServiceLocator.getBean(EstadoRepository.class);
+	public CidadeConverter() {
+		this.cidadeRepository = CDIServiceLocator.getBean(CidadeRepository.class);
 	}
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		Estado retorno = null;
+		Cidade retorno = null;
 
 		if (value != null) {
-			retorno = this.estadoRepository.findOne(new Long(value));
+			retorno = this.cidadeRepository.findOne(new Long(value));
 		}
 
 		return retorno;
@@ -30,10 +30,11 @@ public class EstadoConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		if (value != null) {
-			Estado estado = (Estado) value;
 
-			return estado.getId() == null ? null : estado.getId().toString();
+		if (value != null) {
+			Cidade cidade = (Cidade) value;
+
+			return cidade.getId() == null ? null : cidade.getId().toString();
 		}
 
 		return "";
