@@ -1,6 +1,7 @@
 package com.developlus.sisfila.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -45,7 +47,8 @@ public abstract class Pessoa implements Serializable {
 		this.email = email;
 	}
 
-	@Column(length = 14)
+	@Size(max = 16, min = 16, message = "Informe um telefone válido")
+	@Column(length = 16)
 	public String getTelefone() {
 		return telefone;
 	}

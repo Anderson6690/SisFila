@@ -1,4 +1,4 @@
-package com.developlus.sisfila.controller;
+package com.developlus.sisfila.controller.pesquisa;
 
 import java.io.Serializable;
 import java.util.List;

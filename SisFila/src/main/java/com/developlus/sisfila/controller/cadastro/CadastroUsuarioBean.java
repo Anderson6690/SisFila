@@ -1,4 +1,4 @@
-package com.developlus.sisfila.controller;
+package com.developlus.sisfila.controller.cadastro;
 
 import java.io.Serializable;
 import java.util.List;

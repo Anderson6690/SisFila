@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="titulo">Pesquisa de funcionarios</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="aw-page-title">Pesquisa de funcionarios</h1>
+
+		<h:form id="frm">
+
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:button value="Novo funcionario" outcome="CadastroFuncionario" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable value="#{pesquisaFuncionarioBean.funcionarios}" var="funcionario"
+				selectionMode="single" selection="#{pesquisaFuncionarioBean.funcionario}"
+				rowKey="#{funcionario.id}" reflow="true" style="margin-top: 20px">
+
+				<p:ajax event="rowSelect" update="@this" />
+
+				<p:column headerText="Id">
+					<h:outputText value="#{funcionario.id}" />
+				</p:column>
+
+				<p:column headerText="Nome" priority="3">
+					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+
+				<p:column headerText="CPF" priority="3">
+					<h:outputText value="#{funcionario.cpf}" />
+				</p:column>
+
+				<f:facet name="footer">
+					<p:button outcome="CadastroFuncionario" icon="ui-icon-pencil" disabled="#{not pesquisaFuncionarioBean.funcionarioSelecionado}"
+						value="Editar">
+						<o:param name="funcionario" value="#{pesquisaFuncionarioBean.funcionario.id}" />
+					</p:button>
+				</f:facet>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
 
-	<ui:define name="titulo">Cadastro de Usuario</ui:define>
+	<ui:define name="titulo">Cadastro de Usuário</ui:define>
 
 	<ui:define name="content">
 
@@ -13,7 +13,7 @@
 			<o:viewParam name="usuario" value="#{cadastroUsuarioBean.usuario}" />
 		</f:metadata>
 
-		<h1 class="aw-page-title">Cadastro de Usuario</h1>
+		<h1 class="aw-page-title">Cadastro de Usuário</h1>
 
 		<h:form id="frm">
 
@@ -36,6 +36,8 @@
 			</p:toolbar>
 
 			<p:messages autoUpdate="true" />
+			
+			<p:inputText id="id" value="#{cadastroUsuarioBean.usuario.id}" type="hidden" />
 
 			<div class="ui-fluid">
 				<p:panelGrid columns="4" layout="grid"

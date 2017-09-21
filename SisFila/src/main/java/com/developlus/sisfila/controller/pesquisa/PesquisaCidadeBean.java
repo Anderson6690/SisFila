@@ -1,51 +1,37 @@
-package com.developlus.sisfila.controller;
+package com.developlus.sisfila.controller.pesquisa;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import com.developlus.sisfila.model.Cidade;
-import com.developlus.sisfila.model.Estado;
 import com.developlus.sisfila.service.CidadeService;
-import com.developlus.sisfila.service.EstadoService;
-import com.developlus.sisfila.service.NegocioException;
-import com.developlus.sisfila.util.jsf.FacesUtil;
 
 @Named
 @RequestScoped
-public class CadastroCidadeBean implements Serializable {
+public class PesquisaCidadeBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private CidadeService cidadeService;
-	
-	@Inject EstadoService estadoService;
 
 	private Cidade cidade;
+	private List<Cidade> cidades;
 
 	@PostConstruct
 	public void init() {
-		this.novo();
+		this.listar();
 	}
 
 	public void novo() {
 		this.cidade = new Cidade();
 	}
 
-	public void salvar() {
-		try {
-			this.cidadeService.salvar(cidade);
-			FacesUtil.addSuccessMessage("Cidade Salva com Sucesso");
-			
-			this.novo();
-		} catch (NegocioException e) {
-			FacesUtil.addErrorMessage(e.getMessage());
-		}
-
+	public void listar() {
+		this.cidades = cidadeService.listar();
 	}
 
 	public Cidade getCidade() {
@@ -55,9 +41,17 @@ public class CadastroCidadeBean implements Serializable {
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
 	
-	public List<Estado> getEstados(){
-		return estadoService.listar();
+	public boolean isCidadeSelecionado() {
+		return this.cidade != null;
 	}
 
 }
