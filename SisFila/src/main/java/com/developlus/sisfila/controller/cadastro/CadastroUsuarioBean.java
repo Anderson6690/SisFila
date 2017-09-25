@@ -8,8 +8,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.developlus.sisfila.filter.FuncionarioFilter;
+import com.developlus.sisfila.model.Funcionario;
 import com.developlus.sisfila.model.Grupo;
 import com.developlus.sisfila.model.Usuario;
+import com.developlus.sisfila.service.FuncionarioService;
 import com.developlus.sisfila.service.GrupoService;
 import com.developlus.sisfila.service.NegocioException;
 import com.developlus.sisfila.service.UsuarioService;
@@ -27,6 +30,9 @@ public class CadastroUsuarioBean implements Serializable {
 	@Inject
 	private GrupoService grupoService;
 
+	@Inject
+	private FuncionarioService funcionarioService;
+
 	private Usuario usuario;
 
 	@PostConstruct
@@ -40,7 +46,7 @@ public class CadastroUsuarioBean implements Serializable {
 
 	public void salvar() {
 		try {
-			
+
 			this.usuarioService.salvar(usuario);
 			FacesUtil.addSuccessMessage("Usuário salvo com sucesso!");
 
@@ -61,6 +67,12 @@ public class CadastroUsuarioBean implements Serializable {
 
 	public List<Grupo> getPermissoes() {
 		return grupoService.listar();
+	}
+
+	public List<Funcionario> completarFuncionario(String nome) {
+		FuncionarioFilter funcioarioFilter = new FuncionarioFilter();
+		funcioarioFilter.setNome(nome);
+		return funcionarioService.filtrar(funcioarioFilter);
 	}
 
 }

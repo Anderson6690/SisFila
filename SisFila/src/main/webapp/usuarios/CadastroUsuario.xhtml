@@ -58,6 +58,15 @@
 					
 					<p:outputLabel value="Ativo" for="ativo" />
         			<p:inputSwitch value="#{cadastroUsuarioBean.usuario.ativo}" id="ativo" offLabel="Inativo" onLabel="Ativo" />
+        			
+        			<p:outputLabel value="Funcionário" for="funcionario" />
+					<p:autoComplete id="funcionario"
+						value="#{cadastroUsuarioBean.usuario.funcionario}"
+						completeMethod="#{cadastroUsuarioBean.completarFuncionario}"
+						var="funcionario" itemLabel="#{funcionario.nome}"
+						itemValue="#{funcionario}" forceSelection="true" size="65"
+						required="true"	requiredMessage="Informe o nome do funcionário."
+						emptyMessage="Nenhum integrante encontrado!" />
 					<!-- 
 					<p:outputLabel value="Data Nascimento" for="dataNascimento" />
 					<p:calendar pattern="dd/MM/yyyy" id="dataNascimento"

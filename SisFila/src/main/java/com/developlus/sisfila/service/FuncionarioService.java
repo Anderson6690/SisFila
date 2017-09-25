@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.developlus.sisfila.filter.FuncionarioFilter;
 import com.developlus.sisfila.model.Funcionario;
 import com.developlus.sisfila.repository.FuncionarioRepository;
 import com.developlus.sisfila.util.jpa.Transactional;
@@ -28,6 +29,10 @@ public class FuncionarioService implements Serializable {
 
 	public List<Funcionario> listar() {
 		return funcionarioRepository.findAll();
+	}
+
+	public List<Funcionario> filtrar(FuncionarioFilter filtro) {
+		return funcionarioRepository.filtrar(filtro);
 	}
 
 }

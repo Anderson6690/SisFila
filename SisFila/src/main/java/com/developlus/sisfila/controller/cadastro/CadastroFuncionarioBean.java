@@ -41,6 +41,7 @@ public class CadastroFuncionarioBean implements Serializable {
 
 	public void salvar() {
 		try {
+			System.out.println(">>>> TELEFONE: " + funcionario.getTelefone());
 			this.funcionarioService.salvar(funcionario);
 			FacesUtil.addSuccessMessage("Funcionário salvo com sucesso!");
 

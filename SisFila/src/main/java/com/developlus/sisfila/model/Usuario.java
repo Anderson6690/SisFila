@@ -3,6 +3,7 @@ package com.developlus.sisfila.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,16 +16,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+
 import com.developlus.sisfila.enums.Sexo;
 
 @Entity
@@ -42,6 +45,7 @@ public class Usuario implements Serializable {
 	private Sexo sexo;
 	private Funcionario funcionario;
 	private List<Grupo> grupos;
+	private Date dataCadastro;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,13 +129,30 @@ public class Usuario implements Serializable {
 
 	@Size(min = 1, message = "Selecione pelo menos um grupo")
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_grupo"))	
+	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_grupo"))
 	public List<Grupo> getGrupos() {
 		return grupos;
 	}
 
 	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	@PrePersist
+	private void gerarData() {
+		if (this.dataCadastro == null) {
+			this.dataCadastro = new Date();
+		}
 	}
 
 	@Override

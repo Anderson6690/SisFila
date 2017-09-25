@@ -47,7 +47,7 @@ public abstract class Pessoa implements Serializable {
 		this.email = email;
 	}
 
-	@Size(max = 16, min = 16, message = "Informe um telefone válido")
+	@Size(min = 10, max = 14, message = "Informe um telefone válido")
 	@Column(length = 16)
 	public String getTelefone() {
 		return telefone;

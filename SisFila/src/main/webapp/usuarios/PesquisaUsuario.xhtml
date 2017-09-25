@@ -5,39 +5,48 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
 
-	<ui:define name="titulo">Pesquisa de grupos</ui:define>
+	<ui:define name="titulo">Pesquisa de Usuários</ui:define>
 
 	<ui:define name="content">
 
-		<h1 class="aw-page-title">Pesquisa de grupos</h1>
+		<h1 class="aw-page-title">Pesquisa de Usuários</h1>
 
 		<h:form id="frm">
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">
-					<p:button value="Novo Grupo" outcome="CadastroGrupo" />
+					<p:button value="Novo Usuário" outcome="CadastroUsuario" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:dataTable value="#{pesquisaGrupoBean.grupos}" var="grupo"
-				selectionMode="single" selection="#{pesquisaGrupoBean.grupo}"
-				rowKey="#{grupo.id}" reflow="true"
-				emptyMessage="Nenhum grupo encontrado" style="margin-top: 20px">
+			<p:dataTable value="#{pesquisaUsuarioBean.usuarios}" var="usuario"
+				selectionMode="single" selection="#{pesquisaUsuarioBean.usuario}"
+				rowKey="#{usuario.id}" reflow="true"
+				emptyMessage="Nenhum usuario encontrado" style="margin-top: 20px">
 
 				<p:ajax event="rowSelect" update="@this" />
 
 				<p:column headerText="Id">
-					<h:outputText value="#{grupo.id}" />
+					<h:outputText value="#{usuario.id}" />
 				</p:column>
 
 				<p:column headerText="Nome" priority="3">
-					<h:outputText value="#{grupo.nome}" />
+					<h:outputText value="#{usuario.funcionario.nome}" />
+				</p:column>
+				
+				<p:column headerText="Email" priority="3">
+					<h:outputText value="#{usuario.email}" />
+				</p:column>
+				
+				<p:column headerText="Status" priority="3">
+					<h:outputText value="Ativo" rendered="#{usuario.ativo}"/>
+					<h:outputText value="Inativo" rendered="#{not usuario.ativo}"/>
 				</p:column>
 		
 				<f:facet name="footer">
-					<p:button outcome="CadastroGrupo" icon="ui-icon-pencil" disabled="#{not pesquisaGrupoBean.grupoSelecionado}"
+					<p:button outcome="CadastroUsuario" icon="ui-icon-pencil" disabled="#{not pesquisaUsuarioBean.usuarioSelecionado}"
 						value="Editar">
-						<o:param name="grupo" value="#{pesquisaGrupoBean.grupo.id}" />
+						<o:param name="usuario" value="#{pesquisaUsuarioBean.usuario.id}" />
 					</p:button>
 				</f:facet>
 			</p:dataTable>
