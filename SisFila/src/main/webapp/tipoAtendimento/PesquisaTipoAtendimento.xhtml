@@ -9,7 +9,7 @@
 
 	<ui:define name="content">
 
-		<h1 class="aw-page-title">Pesquisa de TipoAtendimento</h1>
+		<h1 class="aw-page-title">Pesquisa de Tipo de Atendimento</h1>
 
 		<h:form id="frm">
 
@@ -21,7 +21,7 @@
 
 			<p:dataTable value="#{pesquisaTipoAtendimentoBean.tiposAtendimento}" var="tipoAtendimento"
 				selectionMode="single" selection="#{pesquisaTipoAtendimentoBean.tipoAtendimento}"
-				rowKey="#{tipoAtendimento.id}" reflow="true" emptyMessage="Nenhuma tipoAtendimento encontrada" style="margin-top: 20px">
+				rowKey="#{tipoAtendimento.id}" reflow="true" emptyMessage="Nenhuma Tipo de Atendimento encontrado" style="margin-top: 20px">
 
 				<p:ajax event="rowSelect" update="@this" />
 

@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="titulo">Pesquisa de Tipos de Senha</ui:define>
+
+	<ui:define name="content">
+	
+		<h1 class="aw-page-title">Pesquisa de Tipos de Senha</h1>
+
+		<h:form id="frm">
+
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:button value="Novo TipoSenha" outcome="CadastroTipoSenha" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable value="#{pesquisaTipoSenhaBean.tiposSenha}" var="tipoSenha"
+				selectionMode="single" selection="#{pesquisaTipoSenhaBean.tipoSenha}"
+				rowKey="#{tipoSenha.id}" reflow="true"
+				emptyMessage="Nenhuma permissão encontrada" style="margin-top: 20px">
+
+				<p:ajax event="rowSelect" update="@this" />
+
+				<p:column headerText="Id">
+					<h:outputText value="#{tipoSenha.id}" />
+				</p:column>
+
+				<p:column headerText="Prefixo" priority="3">
+					<h:outputText value="#{tipoSenha.prefixo}" />
+				</p:column>
+
+				<f:facet name="footer">
+					<p:button outcome="CadastroTipoSenha" icon="ui-icon-pencil" disabled="#{not pesquisaTipoSenhaBean.tipoSenhaSelecionada}"
+						value="Editar">
+						<o:param name="tipoSenha" value="#{pesquisaTipoSenhaBean.tipoSenha.id}" />
+					</p:button>
+				</f:facet>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

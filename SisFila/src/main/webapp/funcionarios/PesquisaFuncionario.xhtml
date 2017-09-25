@@ -33,10 +33,6 @@
 					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
 
-				<p:column headerText="CPF" priority="3">
-					<h:outputText value="#{funcionario.cpf}" />
-				</p:column>
-
 				<f:facet name="footer">
 					<p:button outcome="CadastroFuncionario" icon="ui-icon-pencil" disabled="#{not pesquisaFuncionarioBean.funcionarioSelecionado}"
 						value="Editar">
