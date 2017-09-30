@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.developlus.sisfila.enums.Sexo;
 import com.developlus.sisfila.filter.FuncionarioFilter;
 import com.developlus.sisfila.model.Funcionario;
 import com.developlus.sisfila.model.Grupo;
@@ -65,7 +66,7 @@ public class CadastroUsuarioBean implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public List<Grupo> getPermissoes() {
+	public List<Grupo> getGrupos() {
 		return grupoService.listar();
 	}
 
@@ -73,6 +74,10 @@ public class CadastroUsuarioBean implements Serializable {
 		FuncionarioFilter funcioarioFilter = new FuncionarioFilter();
 		funcioarioFilter.setNome(nome);
 		return funcionarioService.filtrar(funcioarioFilter);
+	}
+
+	public Sexo[] getSexo() {
+		return Sexo.values();
 	}
 
 }

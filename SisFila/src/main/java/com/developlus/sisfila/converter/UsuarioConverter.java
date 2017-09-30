@@ -5,25 +5,25 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import com.developlus.sisfila.model.Grupo;
-import com.developlus.sisfila.repository.GrupoRepository;
+import com.developlus.sisfila.model.Usuario;
+import com.developlus.sisfila.repository.UsuarioRepository;
 import com.developlus.sisfila.util.cdi.CDIServiceLocator;
 
-@FacesConverter(value="grupoConverter", forClass = Grupo.class)
-public class GrupoConverter implements Converter {
+@FacesConverter(forClass = Usuario.class)
+public class UsuarioConverter implements Converter {
 
-	private GrupoRepository grupoRepository;
+	private UsuarioRepository usuarioRepository;
 
-	public GrupoConverter() {
-		this.grupoRepository = CDIServiceLocator.getBean(GrupoRepository.class);
+	public UsuarioConverter() {
+		this.usuarioRepository = CDIServiceLocator.getBean(UsuarioRepository.class);
 	}
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		Grupo retorno = null;
+		Usuario retorno = null;
 
 		if (value != null) {
-			retorno = this.grupoRepository.findOne(new Long(value));
+			retorno = this.usuarioRepository.findOne(new Long(value));
 		}
 
 		return retorno;
@@ -32,9 +32,9 @@ public class GrupoConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
-			Grupo grupo = (Grupo) value;
+			Usuario usuario = (Usuario) value;
 
-			return grupo.getId() == null ? null : grupo.getId().toString();
+			return usuario.getId() == null ? null : usuario.getId().toString();
 		}
 
 		return "";

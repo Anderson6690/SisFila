@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -45,7 +46,8 @@ public class Grupo implements Serializable {
 		this.nome = nome;
 	}
 
-	@NotNull(message = "Selecione ao menos uma permissão")
+	//@NotNull(message = "Selecione ao menos uma permissão")
+	@Size(min = 1, message = "Selecione pelo menos uma permissão")
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "grupo_permissao", joinColumns = @JoinColumn(name = "id_grupo"), inverseJoinColumns = @JoinColumn(name = "id_permissao"))
 	public List<Permissao> getPermissoes() {

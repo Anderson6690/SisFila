@@ -42,7 +42,6 @@ public class Usuario implements Serializable {
 	private String senha;
 	private String senhaConfirmacao;
 	private boolean ativo;
-	private Sexo sexo;
 	private Funcionario funcionario;
 	private List<Grupo> grupos;
 	private Date dataCadastro;
@@ -105,16 +104,6 @@ public class Usuario implements Serializable {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	@NotNull(message = "O sexo é obrigatório")
-	@Enumerated(EnumType.STRING)
-	public Sexo getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
 	}
 
 	@OneToOne

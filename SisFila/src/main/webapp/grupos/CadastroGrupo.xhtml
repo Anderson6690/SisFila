@@ -10,7 +10,7 @@
 	<ui:define name="content">
 
 		<f:metadata>
-			<o:viewParam name="grupo" value="#{cadastroGrupoBean.grupo}" />
+			<o:viewParam name="grupo" value="#{cadastroGrupoBean.grupo}" converter="grupoConverter" />
 		</f:metadata>
 
 		<h1 class="aw-page-title">Cadastro de Grupo</h1>

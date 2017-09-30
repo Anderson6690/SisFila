@@ -3,7 +3,6 @@ package com.developlus.sisfila.controller.cadastro;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,7 +28,7 @@ public class CadastroGrupoBean implements Serializable {
 
 	private Grupo grupo = new Grupo();
 
-	//@PostConstruct
+	// @PostConstruct
 	public void init() {
 		this.novo();
 	}

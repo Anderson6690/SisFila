@@ -67,12 +67,22 @@
 						itemValue="#{funcionario}" forceSelection="true" size="65"
 						required="true"	requiredMessage="Informe o nome do funcionário."
 						emptyMessage="Nenhum integrante encontrado!" />
-					<!-- 
-					<p:outputLabel value="Data Nascimento" for="dataNascimento" />
-					<p:calendar pattern="dd/MM/yyyy" id="dataNascimento"
-						value="#{cadastroUsuarioBean.usuario.dataNascimento}"
-						locale="pt" placeholder="dd/mm/aaaa" />
-					 -->
+						
+					<p:outputLabel value="Grupos" for="grupos" />
+					<p:selectManyMenu
+						styleClass="form-control" id="grupos"
+						value="#{cadastroUsuarioBean.usuario.grupos}"
+						showCheckbox="true" scrollHeight="137" converter="grupoConverter" >
+						
+						<f:attribute name="collectionType" value="java.util.ArrayList" />
+						
+						<f:selectItems
+							value="#{cadastroUsuarioBean.grupos}"
+							var="grupo" itemLabel="#{grupo.nome}"
+							itemValue="#{grupo}" />
+							
+					</p:selectManyMenu>
+					
 				</p:panelGrid>
 			</div>
 
