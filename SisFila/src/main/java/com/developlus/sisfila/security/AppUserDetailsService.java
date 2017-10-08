@@ -17,10 +17,9 @@ import com.developlus.sisfila.model.Usuario;
 import com.developlus.sisfila.repository.UsuarioRepository;
 import com.developlus.sisfila.util.cdi.CDIServiceLocator;
 
-public class AppUserDetailsService  { 
-	//implements UserDetailsService
-	
-	/**
+public class AppUserDetailsService {
+	// implements UserDetailsService
+/*
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		UsuarioRepository usuarioRepository = CDIServiceLocator.getBean(UsuarioRepository.class);
@@ -42,6 +41,5 @@ public class AppUserDetailsService  {
 
 		return authorities;
 	}
-	**/
-	
+*/
 }
