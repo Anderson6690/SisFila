@@ -10,7 +10,9 @@
 	<ui:define name="content">
 
 		<f:metadata>
-			<o:viewParam name="tipoSenha" value="#{cadastroTipoSenhaBean.tipoSenha}" converter="tipoSenhaConverter"/>
+			<o:viewParam name="tipoSenha"
+				value="#{cadastroTipoSenhaBean.tipoSenha}"
+				converter="tipoSenhaConverter" />
 		</f:metadata>
 
 		<h1 class="aw-page-title">Cadastro de Tipo de Senha</h1>
@@ -20,34 +22,40 @@
 			<p:toolbar>
 
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar"
-						actionListener="#{cadastroTipoSenhaBean.salvar}" process="frm @this"
-						update="@form" />
+					<p:button value="Voltar para pesquisa" outcome="PesquisaTipoSenha"
+						styleClass="btn btn-link custom-btn" />
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Novo"
 						actionListener="#{cadastroTipoSenhaBean.novo}" process="@this"
-						update="@form" />
+						update="@form" styleClass="btn btn-primary custom-btn" />
 
-					<p:button value="Pesquisa" outcome="PesquisaTipoSenha" />
+					<p:commandButton value="Salvar"
+						actionListener="#{cadastroTipoSenhaBean.salvar}"
+						process="frm @this" update="@form"
+						styleClass="btn btn-success custom-btn ml-2" />
 				</p:toolbarGroup>
 
 			</p:toolbar>
 
 			<p:messages autoUpdate="true" />
-			
-			<p:inputText id="id" value="#{cadastroTipoSenhaBean.tipoSenha.id}" type="hidden" />
 
-			<div class="ui-fluid">
-				<p:panelGrid columns="2" layout="grid"
-					columnClasses="ui-grid-col-2, ui-grid-col-4"
-					styleClass="panelgrid-noborder">
+			<p:inputText id="id" value="#{cadastroTipoSenhaBean.tipoSenha.id}"
+				type="hidden" />
 
-					<p:outputLabel value="Prefixo:" for="prefixo" />
-					<p:inputText id="prefixo" value="#{cadastroTipoSenhaBean.tipoSenha.prefixo}" />
-				
-				</p:panelGrid>
+			<div class="panel panel-default mt-4">
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Prefixo:" for="prefixo" />
+							<p:inputText id="prefixo"
+								value="#{cadastroTipoSenhaBean.tipoSenha.prefixo}"
+								styleClass="form-control" />
+						</div>
+					</div>
+				</div>
 			</div>
 
 		</h:form>

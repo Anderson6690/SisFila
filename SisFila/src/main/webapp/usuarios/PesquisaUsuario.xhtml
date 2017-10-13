@@ -14,19 +14,19 @@
 		<h:form id="frm">
 
 			<p:toolbar>
-				<p:toolbarGroup align="right">
-					<p:button value="Novo Usuário" outcome="CadastroUsuario" />
+				<p:toolbarGroup align="right" >
+					<p:button value="Novo" outcome="CadastroUsuario" styleClass="btn btn-primary custom-btn" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
 			<p:dataTable value="#{pesquisaUsuarioBean.usuarios}" var="usuario"
 				selectionMode="single" selection="#{pesquisaUsuarioBean.usuario}"
-				rowKey="#{usuario.id}" reflow="true"
-				emptyMessage="Nenhum usuario encontrado" style="margin-top: 20px">
+				rowKey="#{usuario.id}" reflow="true" styleClass="table mt-4"
+				emptyMessage="Nenhum usuario encontrado" >
 
 				<p:ajax event="rowSelect" update="@this" />
 
-				<p:column headerText="Id">
+				<p:column headerText="Id" style="width: 10%">
 					<h:outputText value="#{usuario.id}" />
 				</p:column>
 

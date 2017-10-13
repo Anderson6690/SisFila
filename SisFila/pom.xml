@@ -142,7 +142,7 @@
 		    <version>4.2.3.RELEASE</version>
 		</dependency>
 
-		<!-- Spring Security (autenticação e autorização) 
+	<!-- Spring Security (autenticação e autorização) 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -159,6 +159,7 @@
 			<version>3.2.5.RELEASE</version>
 		</dependency>
 	-->	
+	
 	</dependencies>
 
 	<repositories>
@@ -169,5 +170,8 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
+	
+	
+	
 
 </project>

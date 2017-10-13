@@ -15,7 +15,7 @@
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">
-					<p:button value="Novo Estado" outcome="CadastroEstado" />
+					<p:button value="Novo" outcome="CadastroEstado" styleClass="btn btn-primary custom btn"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -26,7 +26,7 @@
 
 				<p:ajax event="rowSelect" update="@this" />
 
-				<p:column headerText="Id">
+				<p:column headerText="Id"  style="width: 20%;">
 					<h:outputText value="#{estado.id}" />
 				</p:column>
 

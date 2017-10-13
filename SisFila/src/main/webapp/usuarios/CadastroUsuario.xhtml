@@ -15,75 +15,100 @@
 
 		<h1 class="aw-page-title">Cadastro de Usuário</h1>
 
-		<h:form id="frm">
-
+		<h:form id="frm" styleClass="form">
+		
 			<p:toolbar>
 
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar"
-						actionListener="#{cadastroUsuarioBean.salvar}" process="frm @this"
-						update="@form" />
+					<p:button value="Voltar para pesquisa" outcome="PesquisaUsuario" styleClass="btn btn-link custom-btn"/>
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Novo"
 						actionListener="#{cadastroUsuarioBean.novo}" process="@this"
-						update="@form" />
+						update="@form" styleClass="btn btn-primary custom-btn" />
 
-					<p:button value="Pesquisa" outcome="PesquisaUsuario" />
+					<p:commandButton value="Salvar"
+						actionListener="#{cadastroUsuarioBean.salvar}" process="frm @this"
+						update="@form" styleClass="btn btn-success custom-btn ml-2" />
 				</p:toolbarGroup>
 
 			</p:toolbar>
 
 			<p:messages autoUpdate="true" />
-			
-			<p:inputText id="id" value="#{cadastroUsuarioBean.usuario.id}" type="hidden" />
 
-			<div class="ui-fluid">
-				<p:panelGrid columns="4" layout="grid"
-					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
-					styleClass="panelgrid-noborder">
+			<p:inputText id="id" value="#{cadastroUsuarioBean.usuario.id}"
+				type="hidden" />
 
-					<p:outputLabel value="Email:" for="email" />
-					<p:inputText id="email" value="#{cadastroUsuarioBean.usuario.email}" type="email"/>
-					
-					<p:outputLabel value="Username:" for="username" />
-					<p:inputText id="username" value="#{cadastroUsuarioBean.usuario.userName}" />
-					
-					<p:outputLabel value="Senha:" for="senha" />
-					<p:inputText id="senha" value="#{cadastroUsuarioBean.usuario.senha}" type="password"/>
-					
-					<p:outputLabel value="Confirme a senha:" for="senhaConfirmacao" />
-					<p:inputText id="senhaConfirmacao" value="#{cadastroUsuarioBean.usuario.senhaConfirmacao}" type="password"/>
-					
-					<p:outputLabel value="Ativo" for="ativo" />
-        			<p:inputSwitch value="#{cadastroUsuarioBean.usuario.ativo}" id="ativo" offLabel="Inativo" onLabel="Ativo" />
-        			
-        			<p:outputLabel value="Funcionário" for="funcionario" />
-					<p:autoComplete id="funcionario"
-						value="#{cadastroUsuarioBean.usuario.funcionario}"
-						completeMethod="#{cadastroUsuarioBean.completarFuncionario}"
-						var="funcionario" itemLabel="#{funcionario.nome}"
-						itemValue="#{funcionario}" forceSelection="true" size="65"
-						required="true"	requiredMessage="Informe o nome do funcionário."
-						emptyMessage="Nenhum integrante encontrado!" />
-						
-					<p:outputLabel value="Grupos" for="grupos" />
-					<p:selectManyMenu
-						styleClass="form-control" id="grupos"
-						value="#{cadastroUsuarioBean.usuario.grupos}"
-						showCheckbox="true" scrollHeight="137" converter="grupoConverter" >
-						
-						<f:attribute name="collectionType" value="java.util.ArrayList" />
-						
-						<f:selectItems
-							value="#{cadastroUsuarioBean.grupos}"
-							var="grupo" itemLabel="#{grupo.nome}"
-							itemValue="#{grupo}" />
-							
-					</p:selectManyMenu>
-					
-				</p:panelGrid>
+			<div class="panel panel-default mt-4">
+				<div class="panel-body">
+
+					<div class="row">
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Email:" for="email" />
+							<p:inputText id="email" styleClass="form-control"
+								value="#{cadastroUsuarioBean.usuario.email}" type="email" />
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Username:" for="username" />
+							<p:inputText id="username" styleClass="form-control"
+								value="#{cadastroUsuarioBean.usuario.userName}" />
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Senha:" for="senha" />
+							<p:inputText id="senha" styleClass="form-control"
+								value="#{cadastroUsuarioBean.usuario.senha}" type="password" />
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Confirme a senha:" for="senhaConfirmacao" />
+							<p:inputText id="senhaConfirmacao"
+								value="#{cadastroUsuarioBean.usuario.senhaConfirmacao}"
+								type="password" />
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Ativo" for="ativo" />
+							<p:inputSwitch value="#{cadastroUsuarioBean.usuario.ativo}"
+								id="ativo" offLabel="Inativo" onLabel="Ativo" />
+						</div>
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Funcionário" for="funcionario" />
+							<p:autoComplete id="funcionario"
+								value="#{cadastroUsuarioBean.usuario.funcionario}"
+								completeMethod="#{cadastroUsuarioBean.completarFuncionario}"
+								var="funcionario" itemLabel="#{funcionario.nome}"
+								itemValue="#{funcionario}" forceSelection="true" size="65"
+								required="true" requiredMessage="Informe o nome do funcionário."
+								emptyMessage="Nenhum integrante encontrado!" />
+						</div>
+
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Grupos" for="grupos" />
+							<p:selectManyMenu styleClass="form-control" id="grupos"
+								value="#{cadastroUsuarioBean.usuario.grupos}"
+								showCheckbox="true" scrollHeight="137"
+								converter="grupoConverter">
+
+								<f:attribute name="collectionType" value="java.util.ArrayList" />
+
+								<f:selectItems value="#{cadastroUsuarioBean.grupos}" var="grupo"
+									itemLabel="#{grupo.nome}" itemValue="#{grupo}" />
+
+							</p:selectManyMenu>
+						</div>
+					</div>
+
+				</div>
 			</div>
 
 		</h:form>

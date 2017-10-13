@@ -15,7 +15,7 @@
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">
-					<p:button value="Novo funcionario" outcome="CadastroFuncionario" />
+					<p:button value="Novo" outcome="CadastroFuncionario" styleClass="btn btn-primary custom btn"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -25,12 +25,20 @@
 
 				<p:ajax event="rowSelect" update="@this" />
 
-				<p:column headerText="Id">
+				<p:column headerText="Id"  style="width: 20%;">
 					<h:outputText value="#{funcionario.id}" />
 				</p:column>
 
 				<p:column headerText="Nome" priority="3">
 					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+				
+				<p:column headerText="Email" priority="3">
+					<h:outputText value="#{funcionario.email}" />
+				</p:column>
+				
+				<p:column headerText="Telefone" priority="3">
+					<h:outputText value="#{funcionario.telefone}" />
 				</p:column>
 
 				<f:facet name="footer">

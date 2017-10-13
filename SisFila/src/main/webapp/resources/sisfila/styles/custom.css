@@ -32,3 +32,9 @@ body {
     background-color: #00944a !important;
     background-image: none !important;
 }
+
+/* BUTTONS */
+.custom-btn {
+    background-image: none !important;
+    text-shadow: none !important;
+}

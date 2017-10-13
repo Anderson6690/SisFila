@@ -18,22 +18,22 @@
 
 		<p:focus for="frm"/>
 		
-		<h:form id="frm" >
+		<h:form id="frm" styleClass="form" >
 
 			<p:toolbar>
 
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar"
-						actionListener="#{cadastroFuncionarioBean.salvar}" process="frm"
-						update="@form" />
+					<p:button value="Voltar para pesquisa" outcome="PesquisaFuncionario" styleClass="btn btn-link custom-btn"/>					
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Novo"
 						actionListener="#{cadastroFuncionarioBean.novo}" process="@this"
-						update="@form" />
-
-					<p:button value="Pesquisa" outcome="PesquisaFuncionario" />
+						update="@form" styleClass="btn btn-primary custom-btn" />
+						
+					<p:commandButton value="Salvar"
+						actionListener="#{cadastroFuncionarioBean.salvar}" process="frm"
+						update="@form" styleClass="btn btn-success custom-btn ml-2" />					
 				</p:toolbarGroup>
 
 			</p:toolbar>
@@ -43,82 +43,87 @@
 			<p:separator />
 			
 			<p:inputText id="id" value="#{cadastroFuncionarioBean.funcionario.id}" type="hidden"/>
-
-			<div class="ui-fluid">
-				<p:panelGrid columns="4" layout="grid"
-					columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-2, ui-grid-col-2"
-					styleClass="panelgrid-noborder">
-
-					<p:column>
-						<p:outputLabel value="Nome:" for="nome" />
-						<p:inputText id="nome" value="#{cadastroFuncionarioBean.funcionario.nome}" />
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Data Nascimento" for="dataNascimento" />
-						<p:calendar id="dataNascimento"
-							value="#{cadastroFuncionarioBean.funcionario.dataNascimento}" />
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Sexo" for="sexo" />
-						<p:selectOneMenu id="sexo"
-							value="#{cadastroFuncionarioBean.funcionario.sexo}">
-							<f:selectItem itemLabel="Selecione" />
-							<f:selectItems var="sexo" itemLabel="#{sexo.descricao}"
-								itemValue="#{sexo}" noSelectionValue="false"
-								value="#{cadastroFuncionarioBean.sexo}" />
-						</p:selectOneMenu>
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Telefone" for="telefone" />
-						<p:inputMask id="telefone" mask="(99)99999-9999"
-							value="#{cadastroFuncionarioBean.funcionario.telefone}" />
-					</p:column>
-					
-					<p:column>
-						<p:outputLabel value="Email" for="email" />
-						<p:inputText id="email"
-							value="#{cadastroFuncionarioBean.funcionario.email}" />
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Cidade" for="cidade" />
-			    		<p:selectOneMenu id="cidade" value="#{cadastroFuncionarioBean.funcionario.municipio}">
-			    			<f:selectItem noSelectionOption="true" itemLabel="Selecione"/>
-			    			<f:selectItems value="#{cadastroFuncionarioBean.cidades}" var="cidade"
-			    				itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
-			    		</p:selectOneMenu>
-					</p:column>
-					
-					
-
-					<p:column>
-						<p:outputLabel value="CEP" for="cep" />
-						<p:inputMask id="cep" mask="99999-999"
-							value="#{cadastroFuncionarioBean.funcionario.cep}" />
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Logradouro" for="logradouro" />
-						<p:inputText id="logradouro"
-							value="#{cadastroFuncionarioBean.funcionario.logradouro}" />
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Bairro" for="bairro" />
-						<p:inputText id="bairro"
-							value="#{cadastroFuncionarioBean.funcionario.bairro}" />
-					</p:column>
-
-					<p:column>
-						<p:outputLabel value="Número" for="numero" />
-						<p:inputText id="numero"
-							value="#{cadastroFuncionarioBean.funcionario.numero}" />
-					</p:column>
-				</p:panelGrid>
+			
+			<div class="panel panel-default mt-4" >
+			  <div class="panel-body">
+			
+			    	<div class="row">
+			    		<div class="col-md-4 form-group">
+			    			<p:outputLabel value="Nome:" for="nome" />
+							<p:inputText id="nome" value="#{cadastroFuncionarioBean.funcionario.nome}" styleClass="form-control"/>
+			    		</div>
+			    		
+			    		<div class="col-md-2 form-group">
+			    			<p:outputLabel value="Data Nascimento" for="dataNascimento" />
+							<p:calendar id="dataNascimento" 
+								value="#{cadastroFuncionarioBean.funcionario.dataNascimento}" />
+			    		</div>
+			    		
+			    		<div class="col-md-2 form-group">
+			    			<p:outputLabel value="Sexo" for="sexo" />
+							<p:selectOneMenu id="sexo"
+								value="#{cadastroFuncionarioBean.funcionario.sexo}">
+								<f:selectItem itemLabel="Selecione" />
+								<f:selectItems var="sexo" itemLabel="#{sexo.descricao}"
+									itemValue="#{sexo}" noSelectionValue="false"
+									value="#{cadastroFuncionarioBean.sexo}" />
+							</p:selectOneMenu>
+			    		</div>
+			    		
+			    		<div class="col-md-2 form-group">
+			    			<p:outputLabel value="Telefone" for="telefone" />
+							<p:inputMask id="telefone" mask="(99)99999-9999" styleClass="form-control"
+								value="#{cadastroFuncionarioBean.funcionario.telefone}" />
+			    		</div>
+			    	</div>
+			    	
+			    	<div class="row">
+			    		<div class="col-md-4 form-group">
+				    		<p:outputLabel value="Email" for="email" />
+							<p:inputText id="email" styleClass="form-control"
+								value="#{cadastroFuncionarioBean.funcionario.email}" />
+			    		</div>
+			    		
+			    		<div class="col-md-2 form-group">
+				    		<p:outputLabel value="Cidade" for="cidade" />
+				    		<p:selectOneMenu id="cidade" value="#{cadastroFuncionarioBean.funcionario.municipio}">
+				    			<f:selectItem noSelectionOption="true" itemLabel="Selecione"/>
+				    			<f:selectItems value="#{cadastroFuncionarioBean.cidades}" var="cidade"
+				    				itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
+				    		</p:selectOneMenu>
+			    		</div>
+			    		
+			    		<div class="col-md-2">
+			    			<p:outputLabel value="CEP" for="cep" />
+							<p:inputMask id="cep" mask="99999-999" styleClass="form-control"
+								value="#{cadastroFuncionarioBean.funcionario.cep}" />
+			    		</div>
+			    		
+			    		<div class="col-md-4">
+				    		<p:outputLabel value="Logradouro" for="logradouro" />
+							<p:inputText id="logradouro" styleClass="form-control"
+								value="#{cadastroFuncionarioBean.funcionario.logradouro}" />
+			    		</div>
+			    	</div>
+			    	
+			    	<div class="row">
+			    		<div class="col-md-4">
+				    		<p:outputLabel value="Bairro" for="bairro" />
+							<p:inputText id="bairro" styleClass="form-control"
+								value="#{cadastroFuncionarioBean.funcionario.bairro}" />
+			    		</div>
+			    		
+			    		<div class="col-md-2">
+				    		<p:outputLabel value="Número" for="numero" />
+							<p:inputText id="numero" styleClass="form-control"
+								value="#{cadastroFuncionarioBean.funcionario.numero}" />
+			    		</div>
+			    	</div>
+			    	
+			    </div>
 			</div>
+
+			
 
 		</h:form>
 	</ui:define>

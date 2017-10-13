@@ -15,7 +15,7 @@
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">
-					<p:button value="Novo cliente" outcome="CadastroCliente" />
+					<p:button value="Novo" outcome="CadastroCliente" styleClass="btn btn-primary custom btn"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -25,15 +25,15 @@
 
 				<p:ajax event="rowSelect" update="@this" />
 
-				<p:column headerText="Id">
+				<p:column headerText="Id" style="width: 20%;" >
 					<h:outputText value="#{cliente.id}" />
 				</p:column>
 
-				<p:column headerText="Nome" priority="3">
+				<p:column headerText="Nome" priority="3" style="width: 50%;">
 					<h:outputText value="#{cliente.nome}" />
 				</p:column>
 
-				<p:column headerText="CPF" priority="3">
+				<p:column headerText="CPF" priority="3" style="width: 30%;">
 					<h:outputText value="#{cliente.cpf}" />
 				</p:column>
 
