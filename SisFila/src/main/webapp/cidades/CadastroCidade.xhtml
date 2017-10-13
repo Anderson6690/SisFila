@@ -15,22 +15,23 @@
 
 		<h1 class="aw-page-title">Cadastro de Cidade</h1>
 
-		<h:form id="frm">
+		<h:form id="frm" styleClass="form" >
 
 			<p:toolbar>
 
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar"
-						actionListener="#{cadastroCidadeBean.salvar}" process="frm @this"
-						update="@form" />
+					<p:button value="Voltar para pesquisa" outcome="PesquisaCidade" styleClass="btn btn-link custom-btn" />					
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
-					<p:commandButton value="Novo"
+					<p:commandButton value="Novo" 
 						actionListener="#{cadastroCidadeBean.novo}" process="@this"
-						update="@form" />
+						update="@form" styleClass="btn btn-primary custom-btn" />
 
-					<p:button value="Pesquisa" outcome="PesquisaCidade" />
+					<p:commandButton value="Salvar"
+							actionListener="#{cadastroCidadeBean.salvar}" process="frm @this"
+							update="@form" styleClass="btn btn-success custom-btn ml-2" />
+					
 				</p:toolbarGroup>
 
 			</p:toolbar>
@@ -38,23 +39,29 @@
 			<p:messages autoUpdate="true" />
 			
 			<p:inputText id="id" value="#{cadastroCidadeBean.cidade.id}" type="hidden"/>
-
-			<div class="ui-fluid">
-				<p:panelGrid columns="4" layout="grid"
-					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
-					styleClass="panelgrid-noborder">
-
-					<p:outputLabel value="Nome:" for="nome" />
-					<p:inputText id="nome" value="#{cadastroCidadeBean.cidade.nome}" />
+			
+			<div class="panel panel-default mt-4" >
+			  <div class="panel-body">
+			
+			    	<div class="row">
+			    		<div class="col-md-4 form-group">
+			    			<p:outputLabel value="Nome:" for="nome" />
+			    			<p:inputText id="nome" value="#{cadastroCidadeBean.cidade.nome}" styleClass="form-control"/>
+			    		</div>
+			    		
+			    		<div class="col-md-4 form-group">
+				    		<p:outputLabel value="Estado" for="estado" />
+				    		
+				    		<p:selectOneMenu id="estado" value="#{cadastroCidadeBean.cidade.estado}">
+				    			<f:selectItem noSelectionOption="true" itemLabel="Selecione o estado"/>
+				    			<f:selectItems value="#{cadastroCidadeBean.estados}" var="estado"
+				    				itemValue="#{estado}" itemLabel="#{estado.nome}" />
+				    		</p:selectOneMenu>
+			    		</div>
+			    		
+			    	</div>	
 					
-					<p:outputLabel value="Estado" for="estado"/>
-		    		<p:selectOneMenu id="estado" value="#{cadastroCidadeBean.cidade.estado}">
-		    			<f:selectItem noSelectionOption="true" itemLabel="Selecione o estado"/>
-		    			<f:selectItems value="#{cadastroCidadeBean.estados}" var="estado"
-		    				itemValue="#{estado}" itemLabel="#{estado.nome}" />
-		    		</p:selectOneMenu>
-
-				</p:panelGrid>
+			  </div>
 			</div>
 
 		</h:form>

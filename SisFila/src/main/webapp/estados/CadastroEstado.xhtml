@@ -17,42 +17,49 @@
 		
 		<p:focus for="frm"/>
 
-		<h:form id="frm">
+		<h:form id="frm" styleClass="form">
 
 			<p:toolbar>
 
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar"
-						actionListener="#{cadastroEstadoBean.salvar}"
-						update="@form" />
+					<p:button value="Voltar para pesquisa" outcome="PesquisaEstado" styleClass="btn btn-link custom-btn"/>					
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
+				
 					<p:commandButton value="Novo"
 						actionListener="#{cadastroEstadoBean.novo}" process="@this"
-						update="@form" />
-
-					<p:button value="Pesquisa" outcome="PesquisaEstado" />
+						update="@form" styleClass="btn btn-primary custom-btn"/>
+					
+					<p:commandButton value="Salvar"
+						actionListener="#{cadastroEstadoBean.salvar}"
+						update="@form" styleClass="btn btn-success custom-btn ml-2"/>
+						
 				</p:toolbarGroup>
 
 			</p:toolbar>
 
 			<p:messages autoUpdate="true" />
 			
-			<p:inputText id="id" value="#{cadastroEstadoBean.estado.id}" type="hidden"/>
-
-			<div class="ui-fluid">
-				<p:panelGrid columns="4" layout="grid"
-					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-2"
-					styleClass="panelgrid-noborder">
-										
-					<p:outputLabel value="Nome:" for="nome" />
-					<p:inputText id="nome" value="#{cadastroEstadoBean.estado.nome}" />
-					
-					<p:outputLabel value="Sigla:" for="sigla" />
-					<p:inputText id="sigla" value="#{cadastroEstadoBean.estado.sigla}" />
-
-				</p:panelGrid>
+			<p:inputText id="id" value="#{cadastroEstadoBean.estado.id}" type="hidden" />
+			
+			<div class="panel panel-default mt-4" >
+			  <div class="panel-body">
+			
+			    	<div class="row">
+			    	
+			    		<div class="col-md-4 form-group">
+			    			<p:outputLabel value="Nome:" for="nome" />
+							<p:inputText id="nome" value="#{cadastroEstadoBean.estado.nome}" />
+			    		</div>
+			    		
+			    		<div class="col-md-2 form-group">
+			    			<p:outputLabel value="Sigla:" for="sigla" />
+							<p:inputText id="sigla" value="#{cadastroEstadoBean.estado.sigla}" />
+			    		</div>
+			    	</div>
+			    	
+			    </div>
 			</div>
 
 		</h:form>

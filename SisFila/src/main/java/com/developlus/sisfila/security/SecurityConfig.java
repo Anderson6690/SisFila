@@ -21,15 +21,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-        http.exceptionHandling().and().authorizeRequests().and()
-                .exceptionHandling().accessDeniedPage("/AcessoNegado.xhtml").and().authorizeRequests()
-                .antMatchers("/javax.faces.resource/**").permitAll()
+        http.exceptionHandling()
+        		.and().authorizeRequests()
+        		.and().exceptionHandling()
+        			.accessDeniedPage("/AcessoNegado.xhtml")
                 .and().authorizeRequests()
-                //.antMatchers("/cadastro-usuarios.jsf", "/cadastro-empresas.jsf").hasRole("ADMINISTRADOR")
-                .anyRequest().authenticated()
-                .and().logout().logoutSuccessUrl("/login.jsf?logout").permitAll()
-                .and().formLogin()//.loginPage("/Login.xhtml")
-                .failureUrl("/login.jsf?erro").permitAll();
+                	.antMatchers("/javax.faces.resource/**").permitAll()
+                .and().authorizeRequests()
+                	//.antMatchers("/cadastro-usuarios.jsf", "/cadastro-empresas.jsf").hasRole("ADMINISTRADOR")
+                	.anyRequest().authenticated()
+                .and().logout()
+                	.logoutSuccessUrl("/Login.xhtml").permitAll()
+                .and().formLogin()
+                	.loginPage("/Login.xhtml")
+                	.loginProcessingUrl("/appLogin")
+                	.usernameParameter("app_username")
+                    .passwordParameter("app_password")
+                    .defaultSuccessUrl("/Dashboard.xhtml")
+                    .failureUrl("/Login.xhtml").permitAll();
     }
 
     @Override

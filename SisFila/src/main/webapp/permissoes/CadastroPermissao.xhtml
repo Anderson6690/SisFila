@@ -20,17 +20,24 @@
 			<p:toolbar>
 
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar"
-						actionListener="#{cadastroPermissaoBean.salvar}" process="frm @this"
-						update="@form" />
+				
+					<p:button value="Voltar para pesquisa" outcome="PesquisaPermissao" styleClass="btn btn-link custom-btn"/>
+					
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
+				
 					<p:commandButton value="Novo"
+						styleClass="btn btn-primary custom-btn"
 						actionListener="#{cadastroPermissaoBean.novo}" process="@this"
 						update="@form" />
+						
+					<p:commandButton value="Salvar"
+						styleClass="btn btn-success custom-btn ml-2"
+						actionListener="#{cadastroPermissaoBean.salvar}" process="frm @this"
+						update="@form" />
 
-					<p:button value="Pesquisa" outcome="PesquisaPermissao" />
+					
 				</p:toolbarGroup>
 
 			</p:toolbar>
@@ -38,16 +45,18 @@
 			<p:messages autoUpdate="true" />
 			
 			<p:inputText id="id" value="#{cadastroPermissaoBean.permissao.id}" type="hidden" />
-
-			<div class="ui-fluid">
-				<p:panelGrid columns="2" layout="grid"
-					columnClasses="ui-grid-col-2, ui-grid-col-4"
-					styleClass="panelgrid-noborder">
-
-					<p:outputLabel value="Nome:" for="nome" />
-					<p:inputText id="nome" value="#{cadastroPermissaoBean.permissao.nome}" />
-				
-				</p:panelGrid>
+			
+			<div class="panel panel-default mt-4" >
+			  <div class="panel-body">
+			
+			    	<div class="row">
+			    		<div class="col-md-4 form-group">
+			    			<p:outputLabel value="Nome:" for="nome" />
+							<p:inputText id="nome" value="#{cadastroPermissaoBean.permissao.nome}" styleClass="form-control" />
+			    		</div>
+			    	</div>
+			    	
+			    </div>
 			</div>
 
 		</h:form>
