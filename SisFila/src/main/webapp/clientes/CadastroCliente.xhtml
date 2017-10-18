@@ -79,14 +79,15 @@
 								    	
 			    	</div>
 			    	
-			    	<div class="row">			    	
-			    		
-				    	
+			    	<div class="row">		
+			    	
 				    	<div class="col-md-2 form-group">
 				    		<p:outputLabel value="Cidade" for="cidade" />
-							<p:selectOneMenu id="cidade">
-								<f:selectItem itemLabel="Selecione" />
-							</p:selectOneMenu>
+				    		<p:selectOneMenu id="cidade" value="#{cadastroClienteBean.cliente.municipio}">
+				    			<f:selectItem noSelectionOption="true" itemLabel="Selecione"/>
+				    			<f:selectItems value="#{cadastroClienteBean.cidades}" var="cidade"
+				    				itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
+				    		</p:selectOneMenu>
 				    	</div>
 				    	
 				    	<div class="col-md-2 form-group">

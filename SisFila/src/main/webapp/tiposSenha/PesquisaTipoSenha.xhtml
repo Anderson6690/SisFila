@@ -5,24 +5,24 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
 
-	<ui:define name="titulo">Pesquisa de Tipos de Senha</ui:define>
+	<ui:define name="titulo">Pesquisa de tipos de senha</ui:define>
 
 	<ui:define name="content">
 	
-		<h1 class="aw-page-title">Pesquisa de Tipos de Senha</h1>
+		<h1 class="aw-page-title">Pesquisa de tipos de senha</h1>
 
 		<h:form id="frm">
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">
-					<p:button value="Novo Tipo de Senha" outcome="CadastroTipoSenha" />
+					<p:button value="Novo" outcome="CadastroTipoSenha" styleClass="btn btn-primary custom btn"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 
 			<p:dataTable value="#{pesquisaTipoSenhaBean.tiposSenha}" var="tipoSenha"
 				selectionMode="single" selection="#{pesquisaTipoSenhaBean.tipoSenha}"
-				rowKey="#{tipoSenha.id}" reflow="true"
-				emptyMessage="Nenhuma permissão encontrada" style="margin-top: 20px">
+				rowKey="#{tipoSenha.id}" reflow="true" 
+				emptyMessage="Nenhuma permissão encontrada" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 

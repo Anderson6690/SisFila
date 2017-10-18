@@ -1,6 +1,7 @@
 package com.developlus.sisfila.controller.cadastro;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -8,7 +9,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.developlus.sisfila.enums.Sexo;
+import com.developlus.sisfila.model.Cidade;
 import com.developlus.sisfila.model.Cliente;
+import com.developlus.sisfila.service.CidadeService;
 import com.developlus.sisfila.service.ClienteService;
 import com.developlus.sisfila.service.NegocioException;
 import com.developlus.sisfila.util.jsf.FacesUtil;
@@ -21,6 +24,9 @@ public class CadastroClienteBean implements Serializable {
 
 	@Inject
 	private ClienteService clienteService;
+	
+	@Inject 
+	private CidadeService cidadeService;
 
 	private Cliente cliente;
 
@@ -56,4 +62,7 @@ public class CadastroClienteBean implements Serializable {
 		this.cliente = cliente;
 	}
 
+	public List<Cidade> getCidades(){
+		return cidadeService.listar();
+	}
 }

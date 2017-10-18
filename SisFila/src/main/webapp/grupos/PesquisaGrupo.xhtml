@@ -22,7 +22,7 @@
 			<p:dataTable value="#{pesquisaGrupoBean.grupos}" var="grupo"
 				selectionMode="single" selection="#{pesquisaGrupoBean.grupo}"
 				rowKey="#{grupo.id}" reflow="true"
-				emptyMessage="Nenhum grupo encontrado" style="margin-top: 20px">
+				emptyMessage="Nenhum grupo encontrado" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 

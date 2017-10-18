@@ -5,23 +5,23 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
 
-	<ui:define name="titulo">Pesquisa de Cidade</ui:define>
+	<ui:define name="titulo">Pesquisa de cidades</ui:define>
 
 	<ui:define name="content">
 
-		<h1 class="aw-page-title">Pesquisa de Cidade</h1>
+		<h1 class="aw-page-title">Pesquisa de cidades</h1>
 
 		<h:form id="frm">
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">
-					<p:button value="Nova Cidade" outcome="CadastroCidade" styleClass="btn btn-primary custom btn" />
+					<p:button value="Novo" outcome="CadastroCidade" styleClass="btn btn-primary custom btn" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
 			<p:dataTable value="#{pesquisaCidadeBean.cidades}" var="cidade"
 				selectionMode="single" selection="#{pesquisaCidadeBean.cidade}"
-				rowKey="#{cidade.id}" reflow="true" emptyMessage="Nenhuma cidade encontrada" style="margin-top: 20px">
+				rowKey="#{cidade.id}" reflow="true" emptyMessage="Nenhuma cidade encontrada" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 

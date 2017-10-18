@@ -5,11 +5,11 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
 
-	<ui:define name="titulo">Pesquisa de Permissões</ui:define>
+	<ui:define name="titulo">Pesquisa de permissões</ui:define>
 
 	<ui:define name="content">
 	
-		<h1 class="aw-page-title">Pesquisa de Permissões</h1>
+		<h1 class="aw-page-title">Pesquisa de permissões</h1>
 
 		<h:form id="frm">
 
@@ -22,7 +22,7 @@
 			<p:dataTable value="#{pesquisaPermissaoBean.permissoes}" var="permissao"
 				selectionMode="single" selection="#{pesquisaPermissaoBean.permissao}"
 				rowKey="#{permissao.id}" reflow="true"
-				emptyMessage="Nenhuma permissão encontrada" style="margin-top: 20px">
+				emptyMessage="Nenhuma permissão encontrada" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 

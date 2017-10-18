@@ -22,7 +22,7 @@
 			<p:dataTable value="#{pesquisaEstadoBean.estados}" var="estado"
 				selectionMode="single" selection="#{pesquisaEstadoBean.estado}"
 				rowKey="#{estado.id}" reflow="true"
-				emptyMessage="Nenhum estado encontrado" style="margin-top: 20px">
+				emptyMessage="Nenhum estado encontrado" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 

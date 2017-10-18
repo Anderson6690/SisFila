@@ -21,7 +21,7 @@
 
 			<p:dataTable value="#{pesquisaClienteBean.clientes}" var="cliente"
 				selectionMode="single" selection="#{pesquisaClienteBean.cliente}"
-				rowKey="#{cliente.id}" reflow="true" style="margin-top: 20px">
+				rowKey="#{cliente.id}" reflow="true" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 

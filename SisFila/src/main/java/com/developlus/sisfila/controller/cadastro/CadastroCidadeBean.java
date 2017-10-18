@@ -23,7 +23,8 @@ public class CadastroCidadeBean implements Serializable {
 	@Inject
 	private CidadeService cidadeService;
 	
-	@Inject EstadoService estadoService;
+	@Inject 
+	private EstadoService estadoService;
 
 	private Cidade cidade;
 

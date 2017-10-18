@@ -5,11 +5,11 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
 
-	<ui:define name="titulo">Pesquisa de TipoAtendimento</ui:define>
+	<ui:define name="titulo">Pesquisa de tipos de atendimento</ui:define>
 
 	<ui:define name="content">
 
-		<h1 class="aw-page-title">Pesquisa de Tipo de Atendimento</h1>
+		<h1 class="aw-page-title">Pesquisa de tipos de atendimento</h1>
 
 		<h:form id="frm">
 
@@ -21,7 +21,7 @@
 
 			<p:dataTable value="#{pesquisaTipoAtendimentoBean.tiposAtendimento}" var="tipoAtendimento"
 				selectionMode="single" selection="#{pesquisaTipoAtendimentoBean.tipoAtendimento}"
-				rowKey="#{tipoAtendimento.id}" reflow="true" emptyMessage="Nenhuma Tipo de Atendimento encontrado" style="margin-top: 20px">
+				rowKey="#{tipoAtendimento.id}" reflow="true" emptyMessage="Nenhuma Tipo de Atendimento encontrado" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 
