@@ -79,7 +79,6 @@
 								    	
 			    	</div>
 			    	
-<<<<<<< HEAD
 			    	<div class="row">		
 			    	
 				    	<div class="col-md-2 form-group">
@@ -89,16 +88,6 @@
 				    			<f:selectItems value="#{cadastroClienteBean.cidades}" var="cidade"
 				    				itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
 				    		</p:selectOneMenu>
-=======
-			    	<div class="row">			    	
-			    		
-				    	
-				    	<div class="col-md-2 form-group">
-				    		<p:outputLabel value="Cidade" for="cidade" />
-							<p:selectOneMenu id="cidade">
-								<f:selectItem itemLabel="Selecione" />
-							</p:selectOneMenu>
->>>>>>> 4ec66fc1ac57b6b9188c1781d01290dc6186e3ed
 				    	</div>
 				    	
 				    	<div class="col-md-2 form-group">
@@ -110,11 +99,11 @@
 				    		<p:outputLabel value="Número" for="numero" />
 							<p:inputText id="numero"
 								value="#{cadastroClienteBean.cliente.numero}" styleClass="form-control"/>
-				    	</div> 	
+				    	</div> 
+				    		
 				   	</div>
 			    	
-			    	<div class="row">			    	
-			    		
+			    	<div class="row">
 				    	
 				    	<div class="col-md-4 form-group">
 				    		<p:outputLabel value="Logradouro" for="logradouro" />
@@ -126,7 +115,8 @@
 					    	<p:outputLabel value="Bairro" for="bairro" />
 							<p:inputText id="bairro"
 								value="#{cadastroClienteBean.cliente.bairro}" styleClass="form-control"/>
-				    	</div>		    	
+				    	</div>
+				    			    	
 				    </div>   	
 			    		       	
 			    </div>

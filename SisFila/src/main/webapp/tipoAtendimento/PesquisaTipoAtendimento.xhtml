@@ -21,7 +21,7 @@
 
 			<p:dataTable value="#{pesquisaTipoAtendimentoBean.tiposAtendimento}" var="tipoAtendimento"
 				selectionMode="single" selection="#{pesquisaTipoAtendimentoBean.tipoAtendimento}"
-				rowKey="#{tipoAtendimento.id}" reflow="true" emptyMessage="Nenhuma Tipo de Atendimento encontrado" styleClass="table mt-4">
+				rowKey="#{tipoAtendimento.id}" reflow="true" emptyMessage="Nenhum tipo de atendimento encontrado" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
 
@@ -34,11 +34,13 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroTipoAtendimento" icon="ui-icon-pencil" disabled="#{not pesquisaTipoAtendimentoBean.tipoAtendimentoSelecionado}"
-						value="Editar">
+					<p:button outcome="CadastroTipoAtendimento" icon="ui-icon-pencil" 
+						disabled="#{not pesquisaTipoAtendimentoBean.tipoAtendimentoSelecionado}"
+						styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="tipoAtendimento" value="#{pesquisaTipoAtendimentoBean.tipoAtendimento.id}" />
 					</p:button>
 				</f:facet>
+				
 			</p:dataTable>
 
 		</h:form>

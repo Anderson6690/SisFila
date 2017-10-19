@@ -21,6 +21,7 @@
 
 			<p:dataTable value="#{pesquisaClienteBean.clientes}" var="cliente"
 				selectionMode="single" selection="#{pesquisaClienteBean.cliente}"
+				emptyMessage="Nenhum cliente encontrado"
 				rowKey="#{cliente.id}" reflow="true" styleClass="table mt-4">
 
 				<p:ajax event="rowSelect" update="@this" />
@@ -38,7 +39,8 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroCliente" icon="ui-icon-pencil" disabled="#{not pesquisaClienteBean.clienteSelecionado}"
+					<p:button outcome="CadastroCliente" icon="ui-icon-pencil" 
+						disabled="#{not pesquisaClienteBean.clienteSelecionado}" styleClass="btn btn-default custom btn mt-2"
 						value="Editar">
 						<o:param name="cliente" value="#{pesquisaClienteBean.cliente.id}" />
 					</p:button>

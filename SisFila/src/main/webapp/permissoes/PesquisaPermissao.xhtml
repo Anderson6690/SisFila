@@ -35,8 +35,9 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroPermissao" icon="ui-icon-pencil" disabled="#{not pesquisaPermissaoBean.permissaoSelecionada}"
-						value="Editar">
+					<p:button outcome="CadastroPermissao" icon="ui-icon-pencil"
+					 	disabled="#{not pesquisaPermissaoBean.permissaoSelecionada}" 
+					 	styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="permissao" value="#{pesquisaPermissaoBean.permissao.id}" />
 					</p:button>
 				</f:facet>

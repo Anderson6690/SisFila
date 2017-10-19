@@ -35,8 +35,9 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroTipoSenha" icon="ui-icon-pencil" disabled="#{not pesquisaTipoSenhaBean.tipoSenhaSelecionada}"
-						value="Editar">
+					<p:button outcome="CadastroTipoSenha" icon="ui-icon-pencil"
+						disabled="#{not pesquisaTipoSenhaBean.tipoSenhaSelecionada}"
+						styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="tipoSenha" value="#{pesquisaTipoSenhaBean.tipoSenha.id}" />
 					</p:button>
 				</f:facet>

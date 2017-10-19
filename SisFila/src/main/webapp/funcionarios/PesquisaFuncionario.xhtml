@@ -21,7 +21,8 @@
 
 			<p:dataTable value="#{pesquisaFuncionarioBean.funcionarios}" var="funcionario"
 				selectionMode="single" selection="#{pesquisaFuncionarioBean.funcionario}"
-				rowKey="#{funcionario.id}" reflow="true" styleClass="table mt-4">
+				emptyMessage="Nenhum funcionário encontrado"
+				rowKey="#{funcionario.id}" reflow="true" styleClass="table mt-4"  >
 
 				<p:ajax event="rowSelect" update="@this" />
 
@@ -42,8 +43,9 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroFuncionario" icon="ui-icon-pencil" disabled="#{not pesquisaFuncionarioBean.funcionarioSelecionado}"
-						value="Editar">
+					<p:button outcome="CadastroFuncionario" icon="ui-icon-pencil" 
+						disabled="#{not pesquisaFuncionarioBean.funcionarioSelecionado}"
+						styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="funcionario" value="#{pesquisaFuncionarioBean.funcionario.id}" />
 					</p:button>
 				</f:facet>
