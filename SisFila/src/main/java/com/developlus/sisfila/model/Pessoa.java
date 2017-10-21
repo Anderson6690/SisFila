@@ -1,6 +1,7 @@
 package com.developlus.sisfila.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -26,6 +29,7 @@ public abstract class Pessoa implements Serializable {
 	private String numero;
 	private String bairro;
 	private String cep;
+	private Date dataCadastro;
 	private boolean ativo;
 
 	@Id
@@ -100,6 +104,24 @@ public abstract class Pessoa implements Serializable {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_cadastro")
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public boolean isAtivo() {

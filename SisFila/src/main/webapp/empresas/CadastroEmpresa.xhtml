@@ -1,0 +1,157 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="titulo">Cadastro de empresa</ui:define>
+
+	<ui:define name="content">
+
+		<f:metadata>
+			<o:viewParam name="empresa" value="#{cadastroEmpresaBean.empresa}" />
+		</f:metadata>
+
+
+		<h1 class="aw-page-title">Cadastro de empresa</h1>
+
+		<p:focus for="frm" />
+
+		<h:form id="frm" styleClass="form">
+
+			<p:toolbar>
+
+				<p:toolbarGroup>
+					<p:button value="Voltar para pesquisa" outcome="PesquisaEmpresa"
+						styleClass="btn btn-link custom-btn" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Novo"
+						actionListener="#{cadastroEmpresaBean.novo}" process="@this"
+						update="@form" styleClass="btn btn-primary custom-btn" />
+
+					<p:commandButton value="Salvar"
+						actionListener="#{cadastroEmpresaBean.salvar}" process="frm"
+						update="@form" styleClass="btn btn-success custom-btn ml-2" />
+				</p:toolbarGroup>
+
+			</p:toolbar>
+
+			<p:messages autoUpdate="true" />
+
+			<p:separator />
+
+			<p:inputText id="id" value="#{cadastroEmpresaBean.empresa.id}"
+				type="hidden" />
+
+			<div class="panel panel-default mt-4">
+				<div class="panel-body">
+
+					<div class="row">
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Razão Social" for="razaoSocial" />
+							<p:inputText id="razaoSocial"
+								value="#{cadastroEmpresaBean.empresa.razaoSocial}"
+								styleClass="form-control" />
+						</div>
+						
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Fantasia" for="fantasia" />
+							<p:inputText id="fantasia"
+								value="#{cadastroEmpresaBean.empresa.fantasia}"
+								styleClass="form-control" />
+						</div>
+						
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="CNPJ" for="cnpj" />
+							<p:inputMask id="cnpj"
+								mask="99.999.999/9999-99"
+								value="#{cadastroEmpresaBean.empresa.cnpj}"
+								styleClass="form-control" />
+						</div>
+						
+					</div>
+					
+					
+					<div class="row">
+					
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Inscrição Estadual" for="inscricaoEstadual" />
+							<p:inputText id="inscricaoEstadual"
+								value="#{cadastroEmpresaBean.empresa.inscricaoEstadual}"
+								styleClass="form-control" />
+						</div>						
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Data Cadastro" for="dataCadastro" />
+							
+							<p:calendar id="dataNascimento" disabled="true"
+								value="#{cadastroEmpresaBean.empresa.dataCadastro}" />
+						</div>
+						
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Telefone" for="telefone" />
+							<p:inputMask id="telefone" required="true"
+								mask="(99) 9 9999-9999"
+								value="#{cadastroEmpresaBean.empresa.telefone}"
+								styleClass="form-control" />
+						</div>
+						
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Cidade" for="cidade" />
+							<p:selectOneMenu id="cidade"
+								value="#{cadastroEmpresaBean.empresa.municipio}">
+								<f:selectItem noSelectionOption="true" itemLabel="Selecione" />
+								<f:selectItems value="#{cadastroEmpresaBean.cidades}"
+									var="cidade" itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
+							</p:selectOneMenu>
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="CEP" for="cep" />
+							<p:inputText id="cep" value="#{cadastroEmpresaBean.empresa.cep}"
+								styleClass="form-control" />
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Número" for="numero" />
+							<p:inputText id="numero"
+								value="#{cadastroEmpresaBean.empresa.numero}"
+								styleClass="form-control" />
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Logradouro" for="logradouro" />
+							<p:inputText id="logradouro"
+								value="#{cadastroEmpresaBean.empresa.logradouro}"
+								styleClass="form-control" />
+						</div>
+
+						<div class="col-md-4 form-group">
+							<p:outputLabel value="Bairro" for="bairro" />
+							<p:inputText id="bairro"
+								value="#{cadastroEmpresaBean.empresa.bairro}"
+								styleClass="form-control" />
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

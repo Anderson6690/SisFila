@@ -14,8 +14,8 @@ public abstract class PessoaJuridica extends Pessoa {
 	private String razaoSocial;
 	private String fantasia;
 	private String cnpj;
-	private String escricaoEstadual;
-	
+	private String inscricaoEstadual;
+
 	@Column(length = 100)
 	public String getRazaoSocial() {
 		return razaoSocial;
@@ -44,12 +44,12 @@ public abstract class PessoaJuridica extends Pessoa {
 	}
 
 	@Column(length = 20)
-	public String getEscricaoEstadual() {
-		return escricaoEstadual;
+	public String getInscricaoEstadual() {
+		return inscricaoEstadual;
 	}
 
-	public void setEscricaoEstadual(String escricaoEstadual) {
-		this.escricaoEstadual = escricaoEstadual;
+	public void setInscricaoEstadual(String inscricaoEstadual) {
+		this.inscricaoEstadual = inscricaoEstadual;
 	}
 
 }

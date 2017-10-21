@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +19,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.developlus.sisfila.enums.Sexo;
 
 @Entity
 @Table(name = "usuario")
@@ -70,7 +65,7 @@ public class Usuario implements Serializable {
 
 	@NotEmpty(message = "O user name é obrigatório")
 	@Size(min = 4, max = 20, message = "O user name deve conter entre 4 a 20 caracteres")
-	@Column(name = "user_name", length = 20)
+	@Column(name = "user_name", length = 20) 
 	public String getUserName() {
 		return userName;
 	}
@@ -81,6 +76,7 @@ public class Usuario implements Serializable {
 
 	@NotBlank(message = "Informe uma senha")
 	@Size(min = 4, message = "A senha deve conter no mínimo 4 caracteres")
+	@Column(length = 100)
 	public String getSenha() {
 		return senha;
 	}
