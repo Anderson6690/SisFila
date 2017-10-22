@@ -17,7 +17,17 @@
 				<p:toolbarGroup align="right">
 					<p:button value="Novo" outcome="CadastroEstado" styleClass="btn btn-primary custom btn"/>
 				</p:toolbarGroup>
+				<p:toolbarGroup align="left">
+					<p:commandButton value="Pesquisar"
+						actionListener="#{pesquisaEstadoBean.pesquisar}"
+						update="@form" styleClass="btn btn-primary custom-btn"/>
+				</p:toolbarGroup>
 			</p:toolbar>
+			
+			<div class="form-group" style="width: 20%">
+				<p:outputLabel value="Nome" for="nome"/>
+				<p:inputText id="nome" value="#{pesquisaEstadoBean.filtrar.nome}"/>
+			</div>
 
 			<p:dataTable value="#{pesquisaEstadoBean.estados}" var="estado"
 				selectionMode="single" selection="#{pesquisaEstadoBean.estado}"
