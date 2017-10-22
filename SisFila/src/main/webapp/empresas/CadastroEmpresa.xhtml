@@ -40,7 +40,7 @@
 			</p:toolbar>
 
 			<p:messages autoUpdate="true" />
-
+			
 			<p:separator />
 
 			<p:inputText id="id" value="#{cadastroEmpresaBean.empresa.id}"
@@ -57,79 +57,84 @@
 								value="#{cadastroEmpresaBean.empresa.razaoSocial}"
 								styleClass="form-control" />
 						</div>
-						
+
 						<div class="col-md-4 form-group">
 							<p:outputLabel value="Fantasia" for="fantasia" />
 							<p:inputText id="fantasia"
 								value="#{cadastroEmpresaBean.empresa.fantasia}"
 								styleClass="form-control" />
 						</div>
-						
-						<div class="col-md-4 form-group">
+
+						<div class="col-md-3 form-group">
 							<p:outputLabel value="CNPJ" for="cnpj" />
-							<p:inputMask id="cnpj"
-								mask="99.999.999/9999-99"
+							<p:inputMask id="cnpj" mask="99.999.999/9999-99"
 								value="#{cadastroEmpresaBean.empresa.cnpj}"
 								styleClass="form-control" />
 						</div>
-						
+
 					</div>
-					
-					
+
+
 					<div class="row">
-					
-						<div class="col-md-4 form-group">
+
+						<div class="col-md-2 form-group">
 							<p:outputLabel value="Inscrição Estadual" for="inscricaoEstadual" />
 							<p:inputText id="inscricaoEstadual"
 								value="#{cadastroEmpresaBean.empresa.inscricaoEstadual}"
 								styleClass="form-control" />
-						</div>						
-
-						<div class="col-md-2 form-group">
-							<p:outputLabel value="Data Cadastro" for="dataCadastro" />
-							
-							<p:calendar id="dataNascimento" disabled="true"
-								value="#{cadastroEmpresaBean.empresa.dataCadastro}" />
 						</div>
-						
-						<div class="col-md-2 form-group">
-							<p:outputLabel value="Telefone" for="telefone" />
-							<p:inputMask id="telefone" required="true"
-								mask="(99) 9 9999-9999"
-								value="#{cadastroEmpresaBean.empresa.telefone}"
-								styleClass="form-control" />
-						</div>
-						
-					</div>
 
-					<div class="row">
+						
 
-						<div class="col-md-2 form-group">
+						<div class="col-md-4 form-group">
 							<p:outputLabel value="Cidade" for="cidade" />
 							<p:selectOneMenu id="cidade"
-								value="#{cadastroEmpresaBean.empresa.municipio}">
+								value="#{cadastroEmpresaBean.empresa.cidade}">
 								<f:selectItem noSelectionOption="true" itemLabel="Selecione" />
 								<f:selectItems value="#{cadastroEmpresaBean.cidades}"
 									var="cidade" itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
 							</p:selectOneMenu>
 						</div>
 
+					</div>
+					
+					<div class="row">
+					
+						<div class="col-md-4 form-group">
+				    		<p:outputLabel value="Email" for="email" />
+							<p:inputText id="email" styleClass="form-control" type="email"
+								value="#{cadastroEmpresaBean.empresa.email}" />
+			    		</div>
+
 						<div class="col-md-2 form-group">
-							<p:outputLabel value="CEP" for="cep" />
-							<p:inputText id="cep" value="#{cadastroEmpresaBean.empresa.cep}"
-								styleClass="form-control" />
+							<p:outputLabel value="Data Cadastro" for="dataCadastro" />
+							<p:inputText id="dataCadastro" styleClass="form-control"
+								value="#{cadastroEmpresaBean.empresa.dataCadastro}"
+								disabled="true">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>	
+							</p:inputText>
+							
 						</div>
 
 						<div class="col-md-2 form-group">
-							<p:outputLabel value="Número" for="numero" />
-							<p:inputText id="numero"
-								value="#{cadastroEmpresaBean.empresa.numero}"
+							<p:outputLabel value="Telefone" for="telefone" />
+							<p:inputMask id="telefone"
+								mask="(99) 9 9999-9999"
+								value="#{cadastroEmpresaBean.empresa.telefone}"
 								styleClass="form-control" />
 						</div>
-
+					
 					</div>
 
 					<div class="row">
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="CEP" for="cep" />
+							<p:inputMask id="cep"
+								mask="99999-999"
+								value="#{cadastroEmpresaBean.empresa.cep}"
+								styleClass="form-control" />
+						</div>
 
 						<div class="col-md-4 form-group">
 							<p:outputLabel value="Logradouro" for="logradouro" />
@@ -138,10 +143,35 @@
 								styleClass="form-control" />
 						</div>
 
-						<div class="col-md-4 form-group">
+						<div class="col-md-2 form-group">
 							<p:outputLabel value="Bairro" for="bairro" />
 							<p:inputText id="bairro"
 								value="#{cadastroEmpresaBean.empresa.bairro}"
+								styleClass="form-control" />
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Número" for="numero" />
+							<p:inputText id="numero" maxlength="4"
+								value="#{cadastroEmpresaBean.empresa.numero}"
+								styleClass="form-control" />
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Latitude" for="latitude" />
+							<p:inputText id="latitude"
+								value="#{cadastroEmpresaBean.empresa.latitude}"
+								styleClass="form-control" />
+						</div>
+
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Longitude" for="longitude" />
+							<p:inputText id="longitude"
+								value="#{cadastroEmpresaBean.empresa.longitude}"
 								styleClass="form-control" />
 						</div>
 

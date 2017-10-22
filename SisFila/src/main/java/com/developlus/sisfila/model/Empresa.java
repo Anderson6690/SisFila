@@ -2,6 +2,8 @@ package com.developlus.sisfila.model;
 
 import javax.persistence.Entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity(name = "empresa")
 public class Empresa extends PessoaJuridica {
 
@@ -10,6 +12,7 @@ public class Empresa extends PessoaJuridica {
 	private String latitude;
 	private String longitude;
 
+	@NotBlank(message = "A latitude é obrigatória")
 	public String getLatitude() {
 		return latitude;
 	}
@@ -18,6 +21,7 @@ public class Empresa extends PessoaJuridica {
 		this.latitude = latitude;
 	}
 
+	@NotBlank(message = "A longitude é obrigatória")
 	public String getLongitude() {
 		return longitude;
 	}

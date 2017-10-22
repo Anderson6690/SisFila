@@ -23,20 +23,32 @@
 			<p:dataTable value="#{pesquisaEmpresaBean.empresas}" var="empresa"
 				selectionMode="single" selection="#{pesquisaEmpresaBean.empresa}"
 				emptyMessage="Nenhum empresa encontrado" rowKey="#{empresa.id}"
-				reflow="true" styleClass="table mt-4">
+				reflow="true" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
 				<p:ajax event="rowSelect" update="@this" />
 
-				<p:column headerText="Id" style="width: 20%;">
-					<h:outputText value="#{empresa.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
 
-				<p:column headerText="Nome" priority="3" style="width: 50%;">
-					<h:outputText value="#{empresa.nome}" />
+				<p:column headerText="Razão Social" priority="3" style="width: 10%;">
+					<h:outputText value="#{empresa.razaoSocial}" />
+				</p:column>
+				
+				<p:column headerText="Fantasia Social" priority="3" style="width: 10%;">
+					<h:outputText value="#{empresa.fantasia}" />
 				</p:column>
 
-				<p:column headerText="CPF" priority="3" style="width: 30%;">
-					<h:outputText value="#{empresa.cpf}" />
+				<p:column headerText="CNPJ" priority="3" style="width: 6%;">
+					<h:outputText value="#{empresa.cnpj}" />
+				</p:column>
+				
+				<p:column headerText="Email" priority="3" style="width: 8%;">
+					<h:outputText value="#{empresa.email}" />
+				</p:column>
+				
+				<p:column headerText="Telefone" priority="3" style="width: 6%;">
+					<h:outputText value="#{empresa.telefone}" />
 				</p:column>
 
 				<f:facet name="footer">
