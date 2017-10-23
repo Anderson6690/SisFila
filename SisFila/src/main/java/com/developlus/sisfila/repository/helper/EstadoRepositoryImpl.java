@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
 import com.developlus.sisfila.filter.EstadoFilter;
 import com.developlus.sisfila.model.Estado;
 
-public class EstadoRepositoryImpl implements EstadoQueries{
+public class EstadoRepositoryImpl implements EstadoQueries {
 
 	@Inject
 	private EntityManager manager;
@@ -24,9 +24,9 @@ public class EstadoRepositoryImpl implements EstadoQueries{
 	@Override
 	@Transactional(readOnly = true)
 	public List<Estado> filtrar(EstadoFilter filtro) {
-		
+
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Estado.class);
-		
+
 		if (filtro != null) {
 
 			if (filtro.getId() != null) {
@@ -36,13 +36,13 @@ public class EstadoRepositoryImpl implements EstadoQueries{
 			if (!StringUtils.isEmpty(filtro.getSigla())) {
 				criteria.add(Restrictions.ilike("sigla", filtro.getSigla(), MatchMode.ANYWHERE));
 			}
-			
+
 			if (!StringUtils.isEmpty(filtro.getNome())) {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}
 
 		}
-		
+
 		return criteria.list();
 	}
 

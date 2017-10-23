@@ -10,3 +10,4 @@ public interface EstadoQueries {
 	public List<Estado> filtrar(EstadoFilter filtro);
 	
 }
+
