@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import com.developlus.sisfila.filter.EstadoFilter;
 import com.developlus.sisfila.model.Estado;
 import com.developlus.sisfila.service.EstadoService;
 
@@ -18,12 +20,17 @@ public class PesquisaEstadoBean implements Serializable {
 	@Inject
 	private EstadoService estadoService;
 
+	private EstadoFilter filtrar;
 	private Estado estado;
 	private List<Estado> estados;
 
 	@PostConstruct
 	public void init() {
 		this.listar();
+	}
+	
+	public PesquisaEstadoBean(){
+		this.filtrar = new EstadoFilter();
 	}
 
 	public void novo() {
@@ -32,6 +39,12 @@ public class PesquisaEstadoBean implements Serializable {
 
 	public void listar() {
 		this.estados = estadoService.listar();
+	}
+	
+	public void pesquisar(){
+		System.out.println(" \n -- "+filtrar);
+
+		this.estados = this.estadoService.filtrar(filtrar);
 	}
 
 	public Estado getEstado() {
@@ -53,5 +66,14 @@ public class PesquisaEstadoBean implements Serializable {
 	public boolean isEstadoSelecionado() {
 		return this.estado != null;
 	}
+
+	public EstadoFilter getFiltrar() {
+		return filtrar;
+	}
+
+	public void setFiltrar(EstadoFilter filtrar) {
+		this.filtrar = filtrar;
+	}
+	
 
 }

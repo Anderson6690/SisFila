@@ -6,23 +6,29 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.developlus.sisfila.model.Usuario;
 import com.developlus.sisfila.repository.UsuarioRepository;
 import com.developlus.sisfila.util.cdi.CDIServiceLocator;
 
-public class AppUserDetailsService {
-	// implements UserDetailsService
-/*
+@Service
+public class AppUserDetailsService {//implements UserDetailsService{
+	/*
+	@Autowired(required = true)
+	private UsuarioRepository usuarioRepository;
+	// 
+	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		UsuarioRepository usuarioRepository = CDIServiceLocator.getBean(UsuarioRepository.class);
+		//UsuarioRepository usuarioRepository = CDIServiceLocator.getBean(UsuarioRepository.class);
 
 		Optional<Usuario> usuarioOptional = usuarioRepository.porEmailEAtivo(email);
 		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário ou senha Inváldos"));
@@ -31,7 +37,7 @@ public class AppUserDetailsService {
 	}
 
 	private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {
-		UsuarioRepository usuarioRepository = CDIServiceLocator.getBean(UsuarioRepository.class);
+		//UsuarioRepository usuarioRepository = CDIServiceLocator.getBean(UsuarioRepository.class);
 
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
