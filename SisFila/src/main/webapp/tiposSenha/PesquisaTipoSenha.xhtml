@@ -22,20 +22,20 @@
 			<p:dataTable value="#{pesquisaTipoSenhaBean.tiposSenha}" var="tipoSenha"
 				selectionMode="single" selection="#{pesquisaTipoSenhaBean.tipoSenha}"
 				rowKey="#{tipoSenha.id}" reflow="true" 
-				emptyMessage="Nenhuma permissão encontrada" styleClass="table mt-4">
+				emptyMessage="Nenhuma permissão encontrada" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
-				<p:ajax event="rowSelect" update="@this" />
+				<p:ajax event="rowSelect" process="@this" update="btn-editar" />
 
-				<p:column headerText="Id" style="width: 20%;">
-					<h:outputText value="#{tipoSenha.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
 
-				<p:column headerText="Prefixo" priority="3">
+				<p:column headerText="Prefixo" priority="3" style="width: 10%;">
 					<h:outputText value="#{tipoSenha.prefixo}" />
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroTipoSenha" icon="ui-icon-pencil"
+					<p:button id="btn-editar" outcome="CadastroTipoSenha" icon="ui-icon-pencil"
 						disabled="#{not pesquisaTipoSenhaBean.tipoSenhaSelecionada}"
 						styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="tipoSenha" value="#{pesquisaTipoSenhaBean.tipoSenha.id}" />

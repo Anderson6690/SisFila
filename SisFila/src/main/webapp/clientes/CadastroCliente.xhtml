@@ -80,10 +80,15 @@
 			    	</div>
 			    	
 			    	<div class="row">		
+			    		<div class="col-md-4 form-group">
+				    		<p:outputLabel value="Email" for="email" />
+							<p:inputText id="email" styleClass="form-control" type="email"
+								value="#{cadastroClienteBean.cliente.email}" />
+			    		</div>
 			    	
 				    	<div class="col-md-2 form-group">
 				    		<p:outputLabel value="Cidade" for="cidade" />
-				    		<p:selectOneMenu id="cidade" value="#{cadastroClienteBean.cliente.municipio}">
+				    		<p:selectOneMenu id="cidade" value="#{cadastroClienteBean.cliente.cidade}">
 				    			<f:selectItem noSelectionOption="true" itemLabel="Selecione"/>
 				    			<f:selectItems value="#{cadastroClienteBean.cidades}" var="cidade"
 				    				itemValue="#{cidade}" itemLabel="#{cidade.nome}" />

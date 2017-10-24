@@ -22,24 +22,32 @@
 			<p:dataTable value="#{pesquisaClienteBean.clientes}" var="cliente"
 				selectionMode="single" selection="#{pesquisaClienteBean.cliente}"
 				emptyMessage="Nenhum cliente encontrado"
-				rowKey="#{cliente.id}" reflow="true" styleClass="table mt-4">
+				rowKey="#{cliente.id}" reflow="true" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
-				<p:ajax event="rowSelect" update="@this" />
+				<p:ajax event="rowSelect" process="@this" update="btn-editar" />
 
-				<p:column headerText="Id" style="width: 20%;" >
-					<h:outputText value="#{cliente.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
-
-				<p:column headerText="Nome" priority="3" style="width: 50%;">
+				
+				<p:column headerText="Nome" priority="3" style="width: 10%;">
 					<h:outputText value="#{cliente.nome}" />
 				</p:column>
-
-				<p:column headerText="CPF" priority="3" style="width: 30%;">
-					<h:outputText value="#{cliente.cpf}" />
+				
+				<p:column headerText="Email" priority="3" style="width: 8%;">
+					<h:outputText value="#{cliente.email}" />
+				</p:column>
+				
+				<p:column headerText="Telefone" priority="3" style="width: 6%;">
+					<h:outputText value="#{cliente.telefone}" />
+				</p:column>
+				
+				<p:column headerText="Sexo" priority="3" style="width: 4%;">
+					<h:outputText value="#{cliente.sexo.descricao}" />
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroCliente" icon="ui-icon-pencil" 
+					<p:button id="btn-editar" outcome="CadastroCliente" icon="ui-icon-pencil" 
 						disabled="#{not pesquisaClienteBean.clienteSelecionado}" styleClass="btn btn-default custom btn mt-2"
 						value="Editar">
 						<o:param name="cliente" value="#{pesquisaClienteBean.cliente.id}" />

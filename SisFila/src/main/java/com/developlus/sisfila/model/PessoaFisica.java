@@ -12,6 +12,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.developlus.sisfila.enums.Sexo;
 
 @Entity
@@ -24,7 +26,7 @@ public abstract class PessoaFisica extends Pessoa {
 	private Date dataNascimento;
 	private Sexo sexo;
 
-	@NotNull
+	@NotBlank(message = "O nome é obrigatório")
 	@Column(length = 100)
 	public String getNome() {
 		return nome;

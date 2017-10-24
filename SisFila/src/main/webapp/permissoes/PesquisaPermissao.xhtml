@@ -22,20 +22,20 @@
 			<p:dataTable value="#{pesquisaPermissaoBean.permissoes}" var="permissao"
 				selectionMode="single" selection="#{pesquisaPermissaoBean.permissao}"
 				rowKey="#{permissao.id}" reflow="true"
-				emptyMessage="Nenhuma permissão encontrada" styleClass="table mt-4">
+				emptyMessage="Nenhuma permissão encontrada" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
-				<p:ajax event="rowSelect" update="@this" />
+				<p:ajax event="rowSelect" process="@this" update="btn-editar" />
 
-				<p:column headerText="Id" style="width: 20%;">
-					<h:outputText value="#{permissao.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
 
-				<p:column headerText="Nome" priority="3">
+				<p:column headerText="Nome" priority="3" style="width: 10%;">
 					<h:outputText value="#{permissao.nome}" />
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroPermissao" icon="ui-icon-pencil"
+					<p:button id="btn-editar" outcome="CadastroPermissao" icon="ui-icon-pencil"
 					 	disabled="#{not pesquisaPermissaoBean.permissaoSelecionada}" 
 					 	styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="permissao" value="#{pesquisaPermissaoBean.permissao.id}" />

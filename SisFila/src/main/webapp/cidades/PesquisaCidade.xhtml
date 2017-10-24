@@ -21,24 +21,25 @@
 
 			<p:dataTable value="#{pesquisaCidadeBean.cidades}" var="cidade"
 				selectionMode="single" selection="#{pesquisaCidadeBean.cidade}"
-				rowKey="#{cidade.id}" reflow="true" emptyMessage="Nenhuma cidade encontrada" styleClass="table mt-4">
+				rowKey="#{cidade.id}" reflow="true"
+				emptyMessage="Nenhuma cidade encontrada" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
-				<p:ajax event="rowSelect" update="@this" />
+				<p:ajax event="rowSelect" process="@this" update="btn-editar" />
 
-				<p:column headerText="Id" style="width: 20%;">
-					<h:outputText value="#{cidade.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
-
-				<p:column headerText="Nome" priority="3" style="width: 50%;">
+				
+				<p:column headerText="Nome" priority="3" style="width: 10%;">
 					<h:outputText value="#{cidade.nome}" />
 				</p:column>
 				
-				<p:column headerText="Estado" priority="3" style="width: 30%;">
+				<p:column headerText="Estado" priority="3" style="width: 10%;">
 					<h:outputText value="#{cidade.estado.nome}" />
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroCidade" icon="ui-icon-pencil" disabled="#{not pesquisaCidadeBean.cidadeSelecionado}"
+					<p:button id="btn-editar" outcome="CadastroCidade" icon="ui-icon-pencil" disabled="#{not pesquisaCidadeBean.cidadeSelecionado}"
 						styleClass="btn btn-default custom btn mt-2"
 						value="Editar">
 						<o:param name="cidade" value="#{pesquisaCidadeBean.cidade.id}" />

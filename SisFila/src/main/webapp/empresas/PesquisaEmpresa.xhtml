@@ -52,7 +52,7 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroEmpresa" icon="ui-icon-pencil"
+					<p:button id="btn-editar" outcome="CadastroEmpresa" icon="ui-icon-pencil"
 						disabled="#{not pesquisaEmpresaBean.empresaSelecionado}"
 						styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="empresa" value="#{pesquisaEmpresaBean.empresa.id}" />

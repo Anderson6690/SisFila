@@ -10,46 +10,53 @@
 	<ui:define name="content">
 
 		<h1 class="aw-page-title">Pesquisa de estados</h1>
+		
+		<p:separator/>
 
-		<h:form id="frm">
-
-			<p:toolbar>
-				<p:toolbarGroup align="right">
-					<p:button value="Novo" outcome="CadastroEstado" styleClass="btn btn-primary custom btn"/>
-				</p:toolbarGroup>
-				<p:toolbarGroup align="left">
-					<p:commandButton value="Pesquisar"
-						actionListener="#{pesquisaEstadoBean.pesquisar}"
-						update="@form" styleClass="btn btn-primary custom-btn"/>
-				</p:toolbarGroup>
-			</p:toolbar>
+		<h:form id="frm" class="form-inline">
 			
-			<div class="form-group" style="width: 20%">
+			<div class="row mt-4" >
+			
+				<div class="col-md-4 form-group">
+				
 				<p:outputLabel value="Nome" for="nome"/>
-				<p:inputText id="nome" value="#{pesquisaEstadoBean.filtrar.nome}"/>
-			</div>
+					<p:inputText id="nome" value="#{pesquisaEstadoBean.filter.nome}"/>
+				</div>
+				
+				<div class="col-md-2 form-group">
+					<p:outputLabel value="Sigla" for="sigla"/>
+					<p:inputText id="sigla" value="#{pesquisaEstadoBean.filter.sigla}"/>
+				</div>
+				
+				<p:commandButton value="Pesquisar"  icon="fa fa-search"
+					 actionListener="#{pesquisaEstadoBean.pesquisar}" 
+					 update="tabela" styleClass="btn btn-info custom-btn mt-4" />
+				 
+				 <p:button value="Novo" icon="fa fa-plus" outcome="CadastroEstado" styleClass="btn btn-primary custom-btn mt-4 mr-4 pull-right"/>
+				
+			</div>			
 
-			<p:dataTable value="#{pesquisaEstadoBean.estados}" var="estado"
+			<p:dataTable value="#{pesquisaEstadoBean.estados}" var="estado" id="tabela"
 				selectionMode="single" selection="#{pesquisaEstadoBean.estado}"
-				rowKey="#{estado.id}" reflow="true"
-				emptyMessage="Nenhum estado encontrado" styleClass="table mt-4">
+				rowKey="#{estado.id}" reflow="true" 
+				emptyMessage="Nenhum estado encontrado" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
-				<p:ajax event="rowSelect" update="@this" />
+				<p:ajax event="rowSelect" process="@this" update="btn-editar" />
 
-				<p:column headerText="Id"  style="width: 20%;">
-					<h:outputText value="#{estado.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
 
-				<p:column headerText="Nome" priority="3">
+				<p:column headerText="Nome" priority="3" style="width: 10%;">
 					<h:outputText value="#{estado.nome}" />
 				</p:column>
 
-				<p:column headerText="Sigla" priority="3">
+				<p:column headerText="Sigla" priority="3" style="width: 6%;">
 					<h:outputText value="#{estado.sigla}" />
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroEstado" icon="ui-icon-pencil" disabled="#{not pesquisaEstadoBean.estadoSelecionado}"
+					<p:button id="btn-editar" outcome="CadastroEstado" icon="ui-icon-pencil" disabled="#{not pesquisaEstadoBean.estadoSelecionado}"
 						styleClass="btn btn-default custom btn mt-2"
 						value="Editar">
 						<o:param name="estado" value="#{pesquisaEstadoBean.estado.id}" />

@@ -22,28 +22,28 @@
 			<p:dataTable value="#{pesquisaFuncionarioBean.funcionarios}" var="funcionario"
 				selectionMode="single" selection="#{pesquisaFuncionarioBean.funcionario}"
 				emptyMessage="Nenhum funcionário encontrado"
-				rowKey="#{funcionario.id}" reflow="true" styleClass="table mt-4"  >
+				rowKey="#{funcionario.id}" reflow="true" styleClass="table mt-4" rowIndexVar="numeroLinha">
 
-				<p:ajax event="rowSelect" update="@this" />
+				<p:ajax event="rowSelect" process="@this" update="btn-editar" />
 
-				<p:column headerText="Id"  style="width: 20%;">
-					<h:outputText value="#{funcionario.id}" />
+				<p:column headerText="#" style="width: 2%;">
+					<h:outputText value="#{numeroLinha+1}" />
 				</p:column>
 
-				<p:column headerText="Nome" priority="3">
+				<p:column headerText="Nome" priority="3" style="width: 10%;">
 					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
 				
-				<p:column headerText="Email" priority="3">
+				<p:column headerText="Email" priority="3" style="width: 8%;">
 					<h:outputText value="#{funcionario.email}" />
 				</p:column>
 				
-				<p:column headerText="Telefone" priority="3">
+				<p:column headerText="Telefone" priority="3" style="width: 6%;">
 					<h:outputText value="#{funcionario.telefone}" />
 				</p:column>
 
 				<f:facet name="footer">
-					<p:button outcome="CadastroFuncionario" icon="ui-icon-pencil" 
+					<p:button id="btn-editar" outcome="CadastroFuncionario" icon="ui-icon-pencil" 
 						disabled="#{not pesquisaFuncionarioBean.funcionarioSelecionado}"
 						styleClass="btn btn-default custom btn mt-2" value="Editar">
 						<o:param name="funcionario" value="#{pesquisaFuncionarioBean.funcionario.id}" />
