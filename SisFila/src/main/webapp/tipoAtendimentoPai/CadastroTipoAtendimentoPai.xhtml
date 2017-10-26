@@ -11,19 +11,19 @@
 
 		<f:metadata>
 			<o:viewParam name="tipoAtendimento"
-				value="#{cadastroTipoAtendimentoBean.tipoAtendimento}" />
+				value="#{cadastroTipoAtendimentoPaiBean.tipoAtendimentoPai}" />
 		</f:metadata>
 
 		<h1 class="aw-page-title">Cadastro de Tipo de Atendimento</h1>
 
-		<h:form id="frm" styleClass="form">
+		<h:form id="frm">
 
 			<p:toolbar>
 
 				<p:toolbarGroup>
 
 					<p:button value="Voltar para pesquisa"
-						outcome="PesquisaTipoAtendimento"
+						outcome="PesquisaTipoAtendimentoPai"
 						styleClass="btn btn-link custom-btn" />
 
 				</p:toolbarGroup>
@@ -31,12 +31,12 @@
 				<p:toolbarGroup align="right">
 
 					<p:commandButton value="Novo"
-						actionListener="#{cadastroTipoAtendimentoBean.novo}"
+						actionListener="#{cadastroTipoAtendimentoPaiBean.novo}"
 						process="@this" update="@form"
 						styleClass="btn btn-primary custom-btn" />
 
 					<p:commandButton value="Salvar"
-						actionListener="#{cadastroTipoAtendimentoBean.salvar}"
+						actionListener="#{cadastroTipoAtendimentoPaiBean.salvar}"
 						process="frm @this" update="@form"
 						styleClass="btn btn-success custom-btn ml-2" />
 
@@ -46,25 +46,21 @@
 
 			<p:messages autoUpdate="true" />
 
-			<p:inputText id="id" value="#{cadastroTipoAtendimentoBean.tipoAtendimento.id}" type="hidden" />
+			<p:inputText id="id"
+				value="#{cadastroTipoAtendimentoPaiBean.tipoAtendimentoPai.id}"
+				type="hidden" />
 
 			<div class="panel panel-default mt-4">
 				<div class="panel-body">
 
 					<div class="row">
-					
 						<div class="col-md-4 form-group">
-							<p:outputLabel value="Tipo" for="tipo" />
-				    		
-				    		<p:selectOneMenu id="tipo" value="#{cadastroTipoAtendimentoBean.tipoAtendimento.tipoAtendimentoPai}">
-				    			<f:selectItem noSelectionOption="true" itemLabel="Selecione o tipo"/>
-				    			<f:selectItems value="#{cadastroTipoAtendimentoBean.tiposAtendimentoPai}" var="tipo"
-				    				itemValue="#{tipo}" itemLabel="#{tipo.descricao}" />
-				    		</p:selectOneMenu>
+							<p:outputLabel value="Descrição:" for="descricao" />
+							<p:inputText id="descricao"
+								value="#{cadastroTipoAtendimentoPaiBean.tipoAtendimentoPai.descricao}"
+								styleClass="form-control" />
 						</div>
-						
 					</div>
-					
 				</div>
 			</div>
 

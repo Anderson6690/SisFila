@@ -48,6 +48,10 @@ public class PesquisaEmpresaBean implements Serializable {
 		return empresas;
 	}
 	
+	public void setEmpresas(List<Empresa> empresas) {
+		this.empresas = empresas;
+	}
+
 	public boolean isEmpresaSelecionado() {
 		return this.empresa != null;
 	}

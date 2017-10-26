@@ -23,7 +23,7 @@ public class Atendimento implements Serializable {
 	private int duracao;
 	private Cliente cliente;
 	private Funcionario atendente;
-	private TipoAtendimento tipoAtendimento;
+	private TipoAtendimentoPai tipoAtendimentoPai;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,12 +95,12 @@ public class Atendimento implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "tipo_atendimento_id")
-	public TipoAtendimento getTipoAtendimento() {
-		return tipoAtendimento;
+	public TipoAtendimentoPai getTipoAtendimento() {
+		return tipoAtendimentoPai;
 	}
 
-	public void setTipoAtendimento(TipoAtendimento tipoAtendimento) {
-		this.tipoAtendimento = tipoAtendimento;
+	public void setTipoAtendimento(TipoAtendimentoPai tipoAtendimentoPai) {
+		this.tipoAtendimentoPai = tipoAtendimentoPai;
 	}
 
 	@Override

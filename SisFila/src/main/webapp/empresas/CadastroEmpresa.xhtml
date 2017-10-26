@@ -83,17 +83,15 @@
 								value="#{cadastroEmpresaBean.empresa.inscricaoEstadual}"
 								styleClass="form-control" />
 						</div>
-
 						
-
-						<div class="col-md-4 form-group">
-							<p:outputLabel value="Cidade" for="cidade" />
-							<p:selectOneMenu id="cidade"
-								value="#{cadastroEmpresaBean.empresa.cidade}">
-								<f:selectItem noSelectionOption="true" itemLabel="Selecione" />
-								<f:selectItems value="#{cadastroEmpresaBean.cidades}"
-									var="cidade" itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
-							</p:selectOneMenu>
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Data Cadastro" for="dataCadastro" />
+							<p:inputText id="dataCadastro" styleClass="form-control"
+								value="#{cadastroEmpresaBean.empresa.dataCadastro}"
+								disabled="true">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>	
+							</p:inputText>
+							
 						</div>
 
 					</div>
@@ -107,16 +105,6 @@
 			    		</div>
 
 						<div class="col-md-2 form-group">
-							<p:outputLabel value="Data Cadastro" for="dataCadastro" />
-							<p:inputText id="dataCadastro" styleClass="form-control"
-								value="#{cadastroEmpresaBean.empresa.dataCadastro}"
-								disabled="true">
-								<f:convertDateTime pattern="dd/MM/yyyy"/>	
-							</p:inputText>
-							
-						</div>
-
-						<div class="col-md-2 form-group">
 							<p:outputLabel value="Telefone" for="telefone" />
 							<p:inputMask id="telefone"
 								mask="(99) 9 9999-9999"
@@ -127,6 +115,16 @@
 					</div>
 
 					<div class="row">
+					
+						<div class="col-md-2 form-group">
+							<p:outputLabel value="Cidade" for="cidade" />
+							<p:selectOneMenu id="cidade"
+								value="#{cadastroEmpresaBean.empresa.cidade}">
+								<f:selectItem noSelectionOption="true" itemLabel="Selecione" />
+								<f:selectItems value="#{cadastroEmpresaBean.cidades}"
+									var="cidade" itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
+							</p:selectOneMenu>
+						</div>
 
 						<div class="col-md-2 form-group">
 							<p:outputLabel value="CEP" for="cep" />

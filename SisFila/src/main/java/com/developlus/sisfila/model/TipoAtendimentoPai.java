@@ -6,19 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "tipo_atendimento")
-public class TipoAtendimento implements Serializable {
+@Table(name = "tipo_atendimento_pai")
+public class TipoAtendimentoPai implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private TipoAtendimentoPai tipoAtendimentoPai;
+	private String descricao;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,15 +29,13 @@ public class TipoAtendimento implements Serializable {
 		this.id = id;
 	}
 
-	@NotNull(message = "O tipo de atendimento é obrigatório")
-	@ManyToOne
-	@JoinColumn(name = "tipo_atendimento_pai_id")
-	public TipoAtendimentoPai getTipoAtendimentoPai() {
-		return tipoAtendimentoPai;
+	@NotEmpty(message = "A descrição é obrigatório")
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setTipoAtendimentoPai(TipoAtendimentoPai tipoAtendimentoPai) {
-		this.tipoAtendimentoPai = tipoAtendimentoPai;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override
@@ -57,7 +54,7 @@ public class TipoAtendimento implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TipoAtendimento other = (TipoAtendimento) obj;
+		TipoAtendimentoPai other = (TipoAtendimentoPai) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

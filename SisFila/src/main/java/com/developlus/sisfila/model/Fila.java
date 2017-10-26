@@ -25,7 +25,7 @@ public class Fila implements Serializable {
 	private Long id;
 	private Date data;
 	private List<ItemFila> itens;
-	private TipoAtendimento tipoAtendimento;
+	private TipoAtendimentoPai tipoAtendimentoPai;
 	private TipoSenha tipoSenha;
 
 	@Id
@@ -59,12 +59,12 @@ public class Fila implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "tipo_atendimento_id")
-	public TipoAtendimento getTipoAtendimento() {
-		return tipoAtendimento;
+	public TipoAtendimentoPai getTipoAtendimento() {
+		return tipoAtendimentoPai;
 	}
 
-	public void setTipoAtendimento(TipoAtendimento tipoAtendimento) {
-		this.tipoAtendimento = tipoAtendimento;
+	public void setTipoAtendimento(TipoAtendimentoPai tipoAtendimentoPai) {
+		this.tipoAtendimentoPai = tipoAtendimentoPai;
 	}
 
 	@ManyToOne
